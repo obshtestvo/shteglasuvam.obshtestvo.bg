@@ -608,7 +608,7 @@
 				
 				.main.style4 .content {
 					position: relative;
-					width: 25% !important;
+					width: 20% !important;
 
 					-moz-transition: all 1s ease;
 					-webkit-transition: all 1s ease;
@@ -634,7 +634,7 @@
 				}
 
 					.main.style4.right .content {
-						left: 75% !important;
+						left: 80% !important;
 					}
 
 				.main.style4.inactive {
@@ -846,12 +846,6 @@
 		background-position: 0px 3em; 
 	}
 	
-	#one-8 {
-		background: url('images/overlay.png'), url('../images/8.jpg');
-		background-size: 256px 256px, cover;
-		background-attachment: fixed, fixed;
-		background-position: 0px 3em; 
-	}
 	
 
 
