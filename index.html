@@ -26,6 +26,24 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
 	<body>
+	
+	  <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '501861616625542',
+          xfbml      : true,
+          version    : 'v2.0'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
 
 		<!-- Header -->
 			<header id="header">
@@ -60,6 +78,20 @@
 					</header>
 					<div style="width : 500px;margin-top:130px;margin-left:250px;">
 					<p>Текста ще те мотивира да гласуваш и част от него ще гласи- „Натисни бутона „Ще гласувам“, за да кажеш на твоите приятели, че ще гласуваш на парламентарните избори на 5 октомри 2014. </p>
+					
+		<script type="text/javascript">
+        FB.getLoginStatus(function(response) {
+          if (response.status === 'connected') {
+            console.log('Logged in.');
+          }
+          else {
+            FB.login();
+          }
+        });
+        </script>
+        <iframe src="//www.facebook.com/plugins/facepile.php?app_id=501861616625542&amp;href=https%3A%2F%2Fwww.facebook.com%2FFacebookDevelopers&amp;action&amp;width=200&amp;height=200&amp;max_rows=4&amp;colorscheme=light&amp;size=large&amp;show_count=false&amp;appId=501861616625542" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:200px;" allowTransparency="true"></iframe>
+    
+					
 					<p><img src="images/logo.png"> </p>
 					
 					</div>
@@ -75,7 +107,7 @@
 				<a href="#one-2" class="button style2 down anchored">Next</a>
 			</section>
 			
-			<section id="one-2" class="main style4 right dark fullscreen">
+			<section id="one-2" class="main style4 right dark fullscreen" style="height:100% !important;">
 				<div class="content box style1">
 				<p>Колкото повече мандати печели дадена партия, толкова по-голяма е найната законодателна власт </p>
 				
