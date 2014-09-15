@@ -26,24 +26,15 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
 	<body>
-	
-	  <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '501861616625542',
-          xfbml      : true,
-          version    : 'v2.0'
-        });
-      };
 
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=501861616625542&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 		<!-- Header -->
 			<header id="header">
@@ -89,7 +80,7 @@
           }
         });
         </script>
-        <iframe src="//www.facebook.com/plugins/facepile.php?app_id=501861616625542&amp;href=https%3A%2F%2Fwww.facebook.com%2FFacebookDevelopers&amp;action&amp;width=200&amp;height=200&amp;max_rows=4&amp;colorscheme=light&amp;size=large&amp;show_count=false&amp;appId=501861616625542" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:200px;" allowTransparency="true"></iframe>
+        <div class="fb-facepile" data-app-id="501861616625542" data-href="http://shteglasuvam.obshtestvo.bg/" data-width="250" data-height="250" data-max-rows="3" data-colorscheme="light" data-size="medium" data-show-count="true"></div>
     
 </div>
 <br>
