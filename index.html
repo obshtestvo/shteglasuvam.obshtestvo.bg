@@ -77,6 +77,7 @@
 
 <div style="margin-left:15px;align:right;display:inline-block"> 
 		<script type="text/javascript">
+    window.fbAsyncInit = function() {
         FB.getLoginStatus(function(response) {
           if (response.status === 'connected') {
             console.log('Logged in.');
@@ -85,6 +86,7 @@
             FB.login();
           }
         });
+    };
         </script>
         <div class="fb-facepile" data-app-id="501861616625542" data-href="http://shteglasuvam.obshtestvo.bg/" data-width="250" data-height="250" data-max-rows="3" data-colorscheme="light" data-size="medium" data-show-count="true"></div>
     
