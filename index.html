@@ -33,15 +33,6 @@
 	</head>
 	<body>
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=501861616625542&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
 		<!-- Header -->
 			<header id="header">
 
@@ -76,19 +67,143 @@
 </div>
 
 <div style="margin-left:15px;align:right;display:inline-block"> 
-		<script type="text/javascript">
+
+<a href="#" role="button" id="login_button" >
+	<img style="width: 150px;" src="https://top5.bg/obshtestvo/glasuvam/images/facebook_login.png" alt="">
+</a>
+
+<div id="faces" style="width: 200px; height: 200px; border: 1px solid gray; background: #FFF">
+
+           <iframe src="//www.facebook.com/plugins/facepile.php?app_id=501861616625542&amp;href=http%3A%2F%2Fshteglasuvam.obshtestvo.bg%2F&amp;action&amp;width=250&amp;height=250&amp;max_rows=3&amp;colorscheme=light&amp;size=medium&amp;show_count=true&amp;appId=501861616625542" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:250px;" allowTransparency="true"></iframe>
+
+</div>
+
+
+<script type="text/javascript">
+  //FB Async Init
     window.fbAsyncInit = function() {
-        FB.getLoginStatus(function(response) {
+        FB.init({
+          appId      : '501861616625542',
+          xfbml      : true,
+          version    : 'v2.0'
+        });
+        
+    //Check if logged in
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+      $('#login_button').hide();
+      $('#faces').show();
+
+      console.log("Logged in");
+      
+       //Get friends that have added the app and print them.
+        FB.api(
+            "/me/friends",
+            function (response) {
+              if (response && !response.error) {
+                //console.log("User Relationships");
+                //var obj = (JSON.stringify(response, null, 4));
+
+            var valuesTotal = [];
+              
+            $.each(response.data, function(key, val) {
+                  valuesTotal.push('<p class="bg-warning" style="padding:10px;">'+ val["name"] +'<br />' + val["relationship"] + '<br/>' + val["id"] + '</p>');
+            });
+            
+            var collected = valuesTotal.join('');
+              $(collected).appendTo('#friends');
+
+  
+              }
+            }
+        );
+
+          // Adding the family relatives.
+          FB.api(
+              "/me/family",
+              function (response) {
+                if (response && !response.error) {
+                    $('#login_button').hide();
+                
+                console.log("User Relationships");
+                //var obj = (JSON.stringify(response, null, 4));
+                            
+              //Print the users from this relation.             
+              var valuesTotal = [];
+                
+              $.each(response.data, function(key, val) {
+                    valuesTotal.push('<p class="bg-warning" style="padding:10px;">'+ val["name"] +'<br />' + val["relationship"] + '<br/>' + val["id"] + '</p>');
+              });
+              
+              var collected = valuesTotal.join('');
+                $(collected).appendTo('#family');
+
+    
+                }
+            });       
+
+      }
+      else {
+        $('#faces').hide();
+        $('#login_button').show();
+        console.log("Logged out");
+      }
+      });         
+        
+      };    //FB Async Init    
+
+      
+    //This can be attached to the Login button.  
+    function checkLogin(){
+      FB.getLoginStatus(function(response) {
           if (response.status === 'connected') {
-            console.log('Logged in.');
+                     
+    			console.log("Connected");
+          
           }
           else {
-            FB.login();
-          }
+            FB.login(function(){}, {scope: 'publish_actions,read_friendlists,user_friends,user_relationships'});
+          }   
         });
-    };
-        </script>
-        <div class="fb-facepile" data-app-id="501861616625542" data-href="http://shteglasuvam.obshtestvo.bg/" data-width="250" data-height="250" data-max-rows="3" data-colorscheme="light" data-size="medium" data-show-count="true"></div>
+    }
+
+    function parse_signed_request($signed_request) {
+		  list($encoded_sig, $payload) = explode('.', $signed_request, 2); 
+
+		  $secret = "appsecret"; // Use your app secret here
+
+		  // decode the data
+		  $sig = base64_url_decode($encoded_sig);
+		  $data = json_decode(base64_url_decode($payload), true);
+
+		  // confirm the signature
+		  $expected_sig = hash_hmac('sha256', $payload, $secret, $raw = true);
+		  if ($sig !== $expected_sig) {
+		    error_log('Bad Signed JSON signature!');
+		    return null;
+		  }
+
+		  return $data;
+		}
+
+      
+    $("#vote").on("click",function(){
+        console.log("I'll Vote");
+        checkLogin();
+    });
+
+    $("#login_button").on("click",function(){
+        checkLogin();
+    });
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/bg_BG/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+</script>
     
 </div>
 <br>
