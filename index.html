@@ -184,89 +184,129 @@
 
 <script type="text/javascript">
   
+//FB Async Init
+    window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '501861616625542',
+          xfbml      : true,
+          version    : 'v2.0'
+        });
+        
+    //Check if logged in
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+      $('#login_button').hide();
+      $('#faces').show();
 
-// This is called with the results from from FB.getLoginStatus().
-  // function statusChangeCallback(response) {
-  //   console.log('statusChangeCallback');
-  //   console.log(response);
-  //   // The response object is returned with a status field that lets the
-  //   // app know the current login status of the person.
-  //   // Full docs on the response object can be found in the documentation
-  //   // for FB.getLoginStatus().
-  //   if (response.status === 'connected') {
-  //     // Logged into your app and Facebook.
-  //     // testAPI();
-  //   } else if (response.status === 'not_authorized') {
-  //     // The person is logged into Facebook, but not your app.
-  //     // document.getElementById('status').innerHTML = 'Please log ' +
-  //       // 'into this app.';
-  //   } else {
-  //     // The person is not logged into Facebook, so we're not sure if
-  //     // they are logged into this app or not.
-  //     // document.getElementById('status').innerHTML = 'Please log ' +
-  //     //   'into Facebook.';
-  //   }
-  // }
+      console.log("Logged in");
+      
+       //Get friends that have added the app and print them.
+        FB.api(
+            "/me/friends",
+            function (response) {
+              if (response && !response.error) {
+                //console.log("User Relationships");
+                //var obj = (JSON.stringify(response, null, 4));
 
-
-  // FB.getLoginStatus(function(response) {
-  //   statusChangeCallback(response);
-  // });
-
-
-
-  window.fbAsyncInit = function() {
-    FB.init({
-        appId   : '501861616625542',
-        oauth   : true,
-        status  : true, // check login status
-        cookie  : true, // enable cookies to allow the server to access the session
-        xfbml   : true // parse XFBML
-    });
-
-  };
-
-function fb_login(){
-    FB.login(function(response) {
-
-        if (response.authResponse) {
-            console.log('Welcome!  Fetching your information.... ');
-            //console.log(response); // dump complete info
-            access_token = response.authResponse.accessToken; //get access token
-            user_id = response.authResponse.userID; //get FB UID
-
-            FB.api('/me', function(response) {
-                user_email = response.email; //get user email
-                document.location.reload(true);
-          // you can store this data into your database             
+            var valuesTotal = [];
+              
+            $.each(response.data, function(key, val) {
+                  valuesTotal.push('<p class="bg-warning" style="padding:10px;">'+ val["name"] +'<br />' + val["relationship"] + '<br/>' + val["id"] + '</p>');
             });
+            
+            var collected = valuesTotal.join('');
+              $(collected).appendTo('#friends');
 
-        } else {
-            //user hit cancel button
-            console.log('User cancelled login or did not fully authorize.');
+  
+              }
+            }
+        );
 
-        }
-    }, {
-        scope: 'publish_stream,email'
-    });
-}
-(function() {
-    var e = document.createElement('script');
-    e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
-    e.async = true;
-    document.getElementById('fb-root').appendChild(e);
-}());
+          // Adding the family relatives.
+          FB.api(
+              "/me/family",
+              function (response) {
+                if (response && !response.error) {
+                    $('#login_button').hide();
+                
+                console.log("User Relationships");
+                //var obj = (JSON.stringify(response, null, 4));
+                            
+              //Print the users from this relation.             
+              var valuesTotal = [];
+                
+              $.each(response.data, function(key, val) {
+                    valuesTotal.push('<p class="bg-warning" style="padding:10px;">'+ val["name"] +'<br />' + val["relationship"] + '<br/>' + val["id"] + '</p>');
+              });
+              
+              var collected = valuesTotal.join('');
+                $(collected).appendTo('#family');
+
+    
+                }
+            });       
+
+      }
+      else {
+        $('#faces').hide();
+        $('#login_button').show();
+        console.log("Logged out");
+      }
+      });         
+        
+      };    //FB Async Init    
 
       
-    // $("#vote").on("click",function(){
-    //     console.log("I'll Vote");
-    //     checkLogin();
-    // });
+    //This can be attached to the Login button.  
+    function checkLogin(){
+      FB.getLoginStatus(function(response) {
+          if (response.status === 'connected') {
+                     
+    			console.log("Connected");
+          
+          }
+          else {
+            FB.login(function(){}, {scope: 'publish_actions,read_friendlists,user_friends,user_relationships'});
+          }   
+        });
+    }
 
-    // $("#login_button").on("click",function(){
-    //     checkLogin();
-    // });
+    function parse_signed_request($signed_request) {
+		  list($encoded_sig, $payload) = explode('.', $signed_request, 2); 
 
+		  $secret = "appsecret"; // Use your app secret here
+
+		  // decode the data
+		  $sig = base64_url_decode($encoded_sig);
+		  $data = json_decode(base64_url_decode($payload), true);
+
+		  // confirm the signature
+		  $expected_sig = hash_hmac('sha256', $payload, $secret, $raw = true);
+		  if ($sig !== $expected_sig) {
+		    error_log('Bad Signed JSON signature!');
+		    return null;
+		  }
+
+		  return $data;
+		}
+
+      
+    $("#vote").on("click",function(){
+        console.log("I'll Vote");
+        checkLogin();
+    });
+
+    $("#login_button").on("click",function(){
+        checkLogin();
+    });
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/bg_BG/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
  
 </script>
 	</body>
