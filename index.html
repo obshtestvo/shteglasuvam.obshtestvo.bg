@@ -78,15 +78,15 @@
 </div>
 <br>
 
-<!-- <a href="#" role="button" id="login_button" >
+<a href="#" role="button" id="login_button" onlogin="checkLoginState();">
 	<img style="width: 150px;" src="https://top5.bg/obshtestvo/glasuvam/images/facebook_login.png" alt="">
 </a>
- -->
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
 
-<div id="status">
-</div>
+<!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" id="fb">
+</fb:login-button> -->
+
+<!-- <div id="status">
+</div> -->
 
 <!-- <button class="btn btn-success btn-large btn-block" id="vote">Ще Гласувам</button> -->
 
@@ -191,6 +191,7 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
+      $("#fb").hide();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
