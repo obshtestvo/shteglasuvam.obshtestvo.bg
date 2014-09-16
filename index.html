@@ -79,7 +79,6 @@
            <iframe src="//www.facebook.com/plugins/facepile.php?app_id=501861616625542&amp;href=http%3A%2F%2Fshteglasuvam.obshtestvo.bg%2F&amp;action&amp;width=250&amp;height=250&amp;max_rows=3&amp;colorscheme=light&amp;size=medium&amp;show_count=true&amp;appId=501861616625542" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:250px;" allowTransparency="true"></iframe>
 
 </div>
-
     
 </div>
 <br>
@@ -101,35 +100,35 @@
 				<a href="#one-2" class="button style2 down anchored">Next</a>
 			</section>
 			
-			<section id="one-2" class="main style4 right dark fullscreen" style="height:100% !important;">
-				<div class="content box style1">
+			<section id="one-2" class="main style2 right dark fullscreen" style="height:100% !important;">
+				<!--div class="content box style1">
 				<p>Колкото повече мандати печели дадена партия, толкова по-голяма е найната законодателна власт </p>
 				
-				</div>
+				</div-->
 				<a href="#one-3" class="button style2 down anchored">Next</a>
 			</section>
 			
-			<section id="one-3" class="main style4 right dark fullscreen">
-				<div class="content box style1">
+			<section id="one-3" class="main style2 right dark fullscreen">
+				<!--div class="content box style1">
 				<p>Право на участие при разпределяне на мандатите имат партиите и коалициите, получили не по-малко от 4% от гласовете</p>
 				
-				</div>
+				</div-->
 				<a href="#one-4" class="button style2 down anchored">Next</a>
 			</section>
 			
-			<section id="one-4" class="main style4 right dark fullscreen">
-				<div class="content box style1">
+			<section id="one-4" class="main style2 right dark fullscreen">
+				<!--div class="content box style1">
 				<p>Държавна субсидия се отпуска ежегодно и на партии, които не са представени в НС, но са получили не по-малко от 1% от всички гласове</p>
 				
-				</div>
+				</div-->
 				<a href="#one-5" class="button style2 down anchored">Next</a>
 			</section>
 			
-			<section id="one-5" class="main style4 right dark fullscreen">
-				<div class="content box style1">
+			<section id="one-5" class="main style2 right dark fullscreen">
+				<!--div class="content box style1">
 				<p>При по-висока избирателна активност, един депутат представлява по-голяма част от общия брой избиратели</p>
 				
-				</div>
+				</div-->
 				<a href="#one-6" class="button style2 down anchored">Next</a>
 			</section>
 			
@@ -174,17 +173,6 @@
 
 		<!-- Footer -->
 			<footer id="footer" >
-
-				<!-- Icons -->
-					<ul class="actions">
-						<li><a href="http://twitter.com/share?url=http://shteglasuvam.obshtestvo.bg&text=Аз ще гласувам!" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="http://www.facebook.com/sharer.php?u=http://shteglasuvam.obshtestvo.bg" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="https://plus.google.com/share?url=http://shteglasuvam.obshtestvo.bg" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
-
-					</ul>
-			
-			</footer>
-
 
 <script type="text/javascript">
   //FB Async Init
@@ -265,7 +253,7 @@
       FB.getLoginStatus(function(response) {
           if (response.status === 'connected') {
                      
-    			console.log("Connected");
+          console.log("Connected");
           
           }
           else {
@@ -275,23 +263,23 @@
     }
 
     function parse_signed_request($signed_request) {
-		  list($encoded_sig, $payload) = explode('.', $signed_request, 2); 
+      list($encoded_sig, $payload) = explode('.', $signed_request, 2); 
 
-		  $secret = "appsecret"; // Use your app secret here
+      $secret = "appsecret"; // Use your app secret here
 
-		  // decode the data
-		  $sig = base64_url_decode($encoded_sig);
-		  $data = json_decode(base64_url_decode($payload), true);
+      // decode the data
+      $sig = base64_url_decode($encoded_sig);
+      $data = json_decode(base64_url_decode($payload), true);
 
-		  // confirm the signature
-		  $expected_sig = hash_hmac('sha256', $payload, $secret, $raw = true);
-		  if ($sig !== $expected_sig) {
-		    error_log('Bad Signed JSON signature!');
-		    return null;
-		  }
+      // confirm the signature
+      $expected_sig = hash_hmac('sha256', $payload, $secret, $raw = true);
+      if ($sig !== $expected_sig) {
+        error_log('Bad Signed JSON signature!');
+        return null;
+      }
 
-		  return $data;
-		}
+      return $data;
+    }
 
       
     $("#vote").on("click",function(){
@@ -311,7 +299,5 @@
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
 </script>
-
-
 	</body>
 </html>
