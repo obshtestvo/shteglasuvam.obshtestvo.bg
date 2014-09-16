@@ -257,7 +257,12 @@
           
           }
           else {
-            FB.login(function(){}, {scope: 'publish_actions,read_friendlists,user_friends,user_relationships'});
+          FB.login(function(){}, {scope: 'publish_actions,read_friendlists,user_friends,user_relationships'});
+          FB.init({
+	          appId      : '501861616625542',
+	          xfbml      : true,
+	          version    : 'v2.0'
+          });
           }   
         });
     }
