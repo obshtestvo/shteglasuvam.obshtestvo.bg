@@ -77,8 +77,10 @@
 <tr>
 <td style="vertical-align: top !important;" align="right">
 
+
 <p>Присъединили се до момента </p>
 <img src="images/Counter.png" alt="Ще гласувам" width="150" height="35">
+
 
 <p>
 Регистрирай се във Facebook и покажи на твойте приятели, че ще гласуваш на 5 октомври
@@ -91,19 +93,18 @@
 </td>
 
 <td>
-<iframe src="//www.facebook.com/plugins/facepile.php?app_id=501861616625542&amp;href=http%3A%2F%2Fshteglasuvam.obshtestvo.bg%2F&amp;action&amp;width=250&amp;height=250&amp;max_rows=3&amp;colorscheme=light&amp;size=medium&amp;show_count=true&amp;appId=501861616625542" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:250px;" allowTransparency="true"></iframe>
+
+<div class="fb-facepile" data-href="http://facebook.com/501861616625542" data-max-rows="3" data-colorscheme="light" data-size="medium" data-show-count="true" data-action="join" style="width:250px; height:250px;">
+
+           <iframe src="//www.facebook.com/plugins/facepile.php?app_id=501861616625542&amp;href=http%3A%2F%2Fshteglasuvam.obshtestvo.bg%2F&amp;action=join&amp;width=250&amp;height=250&amp;max_rows=3&amp;colorscheme=light&amp;size=medium&amp;show_count=true&amp;data-href=&amp;appId=501861616625542" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:250px;" allowTransparency="true"></iframe>
+</div>
+
 </td>
 </tr>
 </table>
 
 
-<!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" id="fb">
-</fb:login-button> -->
-
-<!-- <div id="status">
-</div> -->
-
-<!-- <button class="btn btn-success btn-large btn-block" id="vote">Ще Гласувам</button> -->
+	<button class="btn btn-success btn-large btn-block" id="vote">Ще Гласувам</button>
 
 <p>Регистрирай се в Facebook, за да кажеш на твоите приятели че ще гласуваш на парламентарните избори на 5 октомри 2014. </p>
 					
@@ -197,6 +198,9 @@
 
 <script type="text/javascript">
   
+
+
+
 //FB Async Init
     window.fbAsyncInit = function() {
         FB.init({
@@ -213,57 +217,9 @@
       $('#faces').show();
 
       console.log("Logged in");
-      
-       //Get friends that have added the app and print them.
-        FB.api(
-            "/me/friends",
-            function (response) {
-              if (response && !response.error) {
-                //console.log("User Relationships");
-                //var obj = (JSON.stringify(response, null, 4));
+       
 
-            var valuesTotal = [];
-              
-            $.each(response.data, function(key, val) {
-                  valuesTotal.push('<p class="bg-warning" style="padding:10px;">'+ val["name"] +'<br />' + val["relationship"] + '<br/>' + val["id"] + '</p>');
-            });
-            
-            var collected = valuesTotal.join('');
-              $(collected).appendTo('#friends');
-
-  
-              }
-            }
-        );
-
-          // Adding the family relatives.
-          FB.api(
-              "/me/family",
-              function (response) {
-                if (response && !response.error) {
-                    
-                    $('#login_button').hide();
-                    $('#vote').show();
-                
-                console.log("User Relationships");
-                //var obj = (JSON.stringify(response, null, 4));
-                            
-              //Print the users from this relation.             
-              var valuesTotal = [];
-                
-              $.each(response.data, function(key, val) {
-                    valuesTotal.push('<p class="bg-warning" style="padding:10px;">'+ val["name"] +'<br />' + val["relationship"] + '<br/>' + val["id"] + '</p>');
-              });
-              
-              var collected = valuesTotal.join('');
-                $(collected).appendTo('#family');
-
-    
-                }
-            });       
-
-      }
-      else {
+      } else {
         $('#login_button').show();
         $('#vote').hide();
         console.log("Logged out");
@@ -282,7 +238,7 @@
           
           }
           else {
-            FB.login(function(){}, {scope: 'publish_actions,read_friendlists,user_friends,user_relationships'});
+            FB.login(function(){}, {scope: 'email'});
           }   
         });
     }
@@ -301,7 +257,8 @@
          var js, fjs = d.getElementsByTagName(s)[0];
          if (d.getElementById(id)) {return;}
          js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/bg_BG/sdk.js";
+         // js.src = "//connect.facebook.net/bg_BG/sdk.js";
+         js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=501861616625542";
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
  
