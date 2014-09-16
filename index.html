@@ -196,6 +196,7 @@
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
       $('#login_button').hide();
+      $('#vote').show();
       $('#faces').show();
 
       console.log("Logged in");
@@ -229,6 +230,7 @@
                 if (response && !response.error) {
                     
                     $('#login_button').hide();
+                    $('#vote').show();
                 
                 console.log("User Relationships");
                 //var obj = (JSON.stringify(response, null, 4));
@@ -250,6 +252,7 @@
       }
       else {
         $('#login_button').show();
+        $('#vote').hide();
         console.log("Logged out");
       }
       });         
