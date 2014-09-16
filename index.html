@@ -66,14 +66,10 @@
 <img src="images/willvote-logo.png" width="600" height="192">
 </div>
 
-<div style="margin-left:15px;align:right;display:inline-block"> 
+<div style="margin-left:15px;align:right;display:inline-block; float: right;"> 
+<span style="width: 200px; font-size: 12px;">Присъединили се до момента</span>
 
-<div id="faces" style="width: 200px; height: 200px; border: 1px solid gray; background: #FFF">
-
-
-<!-- <div class="fb-facepile" data-href="http://facebook.com/501861616625542" data-max-rows="3" data-colorscheme="light" data-size="medium" data-show-count="true" data-action="join" style="width:250px; height:250px;"></div>
- -->
-           <iframe src="//www.facebook.com/plugins/facepile.php?app_id=501861616625542&amp;href=http%3A%2F%2Fshteglasuvam.obshtestvo.bg%2F&amp;action=join&amp;width=250&amp;height=250&amp;max_rows=3&amp;colorscheme=light&amp;size=medium&amp;show_count=true&amp;data-href=&amp;appId=501861616625542" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:250px;" allowTransparency="true"></iframe>
+<div id="faces" style="width: 200px; height: 250px;">
 
 
 </div>
@@ -89,7 +85,7 @@
 
 	<button class="btn btn-success btn-large btn-block" id="vote">Ще Гласувам</button>
 
-<p>Регистрирай се в Facebook, за да кажеш на твоите приятели че ще гласуваш на парламентарните избори на 5 октомри 2014. </p>
+<p>Регистрирай се в Facebook, за да кажеш на твоите приятели че ще гласуваш на парламентарните избори на 5 октомври 2014. </p>
 					
 
 					
@@ -179,6 +175,8 @@
 		<!-- Footer -->
 			<footer id="footer" >
 
+
+
 <script type="text/javascript">
   
 
@@ -200,6 +198,31 @@
       $('#faces').show();
 
       console.log("Logged in");
+      // console.log(response);
+
+      	FB.api('/me/friends', {fields: 'name,id,location,birthday,photos'}, function(response) {
+
+      		var count = response.data.length;
+
+      		for (var i = 0; i < (count >= 9?9:count); i++) {
+      			
+      			$("#faces").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 2px;\">");
+      		};
+		  
+		});
+
+  //     	var request = $.ajax({
+		//   url: "https://graph.facebook.com/501861616625542",
+		//   type: "POST"
+		// });
+
+  //     	request.done(function( msg ) {
+		//   console.log(msg);
+		// });
+
+		// console.log(request);
+
+      	 
        
 
       } else {
@@ -218,6 +241,7 @@
           if (response.status === 'connected') {
                      
     			console.log("Connected");
+
           
           }
           else {
@@ -240,11 +264,12 @@
          var js, fjs = d.getElementsByTagName(s)[0];
          if (d.getElementById(id)) {return;}
          js = d.createElement(s); js.id = id;
-         // js.src = "//connect.facebook.net/bg_BG/sdk.js";
-         js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=501861616625542";
+         js.src = "//connect.facebook.net/bg_BG/sdk.js";
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
  
+
+
 </script>
 	</body>
 </html>
