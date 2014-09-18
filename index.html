@@ -88,7 +88,7 @@
 <img src="images/Shte-Glasuvam_Button.png" alt="Ще гласувам" width="150" height="35">
 </a>
 
-<img src="images/Shte-Glasuvam_Button.png" alt="Ще гласувам" width="150" height="35">
+<img src="images/Shte-Glasuvam_Button.png" alt="Кой ще гласува" width="150" height="35">
 
 </td>
 
@@ -203,10 +203,7 @@
 
 
 <script type="text/javascript">
-  
-
-
-
+ 
 //FB Async Init
     window.fbAsyncInit = function() {
         FB.init({
@@ -223,7 +220,6 @@
       $('#faces').show();
 
       console.log("Logged in");
-      // console.log(response);
 
       	FB.api('/me/friends', {fields: 'name,id,location,birthday,photos'}, function(response) {
 
@@ -231,7 +227,9 @@
 
       		for (var i = 0; i < (count >= 9?9:count); i++) {
       			
-      			$("#faces").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 2px;\">");
+      	// $("#faces").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 2px;\">");
+      	$("#faces").prepend("<img src=\"images/Man_Silhouette.png\" style=\"margin: 2px;\">");
+      		
       		};
 		  
 		});
@@ -270,7 +268,9 @@
           
           }
           else {
-            FB.login(function(){}, {scope: 'email'});
+            FB.login(function(){
+            	document.location.reload(true);
+            }, {scope: 'email'});
           }   
         });
     }
