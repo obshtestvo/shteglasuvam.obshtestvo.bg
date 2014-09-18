@@ -800,7 +800,8 @@
 /*********************************************************************************/
 
 	#one {
-		background: url('images/overlay.png'), url('../images/1.jpg');
+		#background: url('images/overlay.png'), url('../images/1.jpg');
+		#background-color: #1fa2aa;
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
 		background-position: 0px 3em; 
