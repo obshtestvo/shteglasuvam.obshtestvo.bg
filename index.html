@@ -268,13 +268,22 @@ $(document).ready(function(){
 					console.log(data);
 				});
 
-            	FB.ui({
-				  method: 'share',
-				  href: 'http://shteglasuvam.obshtestvo.bg/',
-				}, function(response){
-					document.location.reload(true);
 
+				var body = 'Ще Гласувам';
+				FB.api('/me/feed', 'post', { message: body }, function(response) {
+				  if (!response || response.error) {
+				    alert('Error occured');
+				  } else {
+				    alert('Post ID: ' + response.id);
+				  }
 				});
+
+    //         	FB.ui({
+				//   method: 'share',
+				//   href: 'http://shteglasuvam.obshtestvo.bg/',
+				// }, function(response){
+				// 	document.location.reload(true);
+				// });
             }, {scope: 'email'});
           }   
         });
