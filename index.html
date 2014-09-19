@@ -33,14 +33,25 @@
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 <script>
-jQuery(function($){
-	var i = 8000000;
+function increment(i){
 	$('#retroclockbox_counter').flipcountdown({size:'sm',
 		tick:function(){
 			return i;
 		}
 	});
-})
+}
+
+
+$(document).ready(function(){
+	$.ajax({
+	url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=check"
+	}).done(function(data){
+		increment(data);
+		console.log(data);
+	});
+
+});
+
 </script>
 	
 	</head>
@@ -250,6 +261,13 @@ jQuery(function($){
           else {
             FB.login(function(){
             	
+            	$.ajax({
+				url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=increment"
+				}).done(function(data){
+					increment(data);
+					console.log(data);
+				});
+
             	FB.ui({
 				  method: 'share',
 				  href: 'http://shteglasuvam.obshtestvo.bg/',
