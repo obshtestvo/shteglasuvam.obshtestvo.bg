@@ -25,7 +25,8 @@ if($_REQUEST['m'] == 'increment'){
 
 	// Close the file 
 	fclose($fp); 
-
+	echo $count;
+	
 }elseif ($_REQUEST['m'] == 'check'){
 
 	$fp = fopen("cnt.dat", "r"); 
