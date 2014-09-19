@@ -230,6 +230,11 @@ jQuery(function($){
       } else {
         // $('#vote').hide();
         console.log("Logged out");
+
+        for (var i = 0; i < 9; i++) {
+			$("#faces").prepend("<img src=\"images/Man_Silhouette.png\" style=\"margin: 2px; width: 50px; height: 50px;\">");
+				
+		};
       }
       });         
         
@@ -252,7 +257,7 @@ jQuery(function($){
 				  href: 'http://shteglasuvam.obshtestvo.bg/',
 				}, function(response){
 					document.location.reload(true);
-					
+
 				});
             }, {scope: 'email'});
           }   
