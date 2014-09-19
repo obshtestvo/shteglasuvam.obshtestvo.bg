@@ -112,10 +112,12 @@ jQuery(function($){
 <td align="center" colspan="2">
 
 <a href="#" role="button" id="login_button" onlogin="fb_login();" style="padding-right:15px;">
-<img src="images/Shte-Glasuvam_Button.png" alt="Ще гласувам" width="150" height="35">
+	<img src="images/Shte-Glasuvam_Button.png" alt="Ще гласувам" width="150" height="35">
 </a>
 
-<img src="images/Shte-Glasuvam_Button.png" alt="Кой ще гласува" width="150" height="35">
+<a href="#" role="button" id="vote_button" onclick="show_who();" style="padding-right:15px;">
+	<img src="images/Shte-Glasuvam_Button.png" alt="Кой ще гласува" width="150" height="35">
+</a>
 
 </td>
 
@@ -186,6 +188,15 @@ jQuery(function($){
 
 <script type="text/javascript">
  
+// Loading page
+// if logged in and not promosed to vote shows siluettes 9 siluettes
+// if not logged in shows 9 siluettes
+
+// press button will vote
+// if logged in popup with like app
+// if not logged in shows login popup
+
+
 //FB Async Init
     window.fbAsyncInit = function() {
         FB.init({
@@ -201,38 +212,23 @@ jQuery(function($){
       $('#vote').show();
       $('#faces').show();
 
-      console.log("Logged in");
+       console.log("Logged in");
 
-      	FB.api('/me/friends', {fields: 'name,id,location,birthday,photos'}, function(response) {
+	FB.api('/me/friends', {fields: 'name,id,location,birthday,photos'}, function(response) {
 
-      		var count = response.data.length;
+		var count = response.data.length;
 
-      		for (var i = 0; i < (count >= 9?9:count); i++) {
-      			
-      	// $("#faces").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 2px;\">");
-      	$("#faces").prepend("<img src=\"images/Man_Silhouette.png\" style=\"margin: 2px; width: 50px; height: 50px;\">");
-      		
-      		};
-		  
-		});
+		for (var i = 0; i < (count >= 9?9:count); i++) {
+			
+		// $("#faces").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 2px;\">");
+		$("#faces").prepend("<img src=\"images/Man_Silhouette.png\" style=\"margin: 2px; width: 50px; height: 50px;\">");
+		
+		};
 
-  //     	var request = $.ajax({
-		//   url: "https://graph.facebook.com/501861616625542",
-		//   type: "POST"
-		// });
-
-  //     	request.done(function( msg ) {
-		//   console.log(msg);
-		// });
-
-		// console.log(request);
-
-      	 
-       
+	});
 
       } else {
-        $('#login_button').show();
-        $('#vote').hide();
+        // $('#vote').hide();
         console.log("Logged out");
       }
       });         
@@ -247,11 +243,14 @@ jQuery(function($){
                      
     			console.log("Connected");
 
-          
           }
           else {
             FB.login(function(){
             	document.location.reload(true);
+            	FB.ui({
+				  method: 'share',
+				  href: 'http://shteglasuvam.obshtestvo.bg/',
+				}, function(response){});
             }, {scope: 'email'});
           }   
         });
@@ -259,24 +258,22 @@ jQuery(function($){
 
       
     $("#vote").on("click",function(){
-        console.log("I'll Vote");
+        // console.log("I'll Vote");
         checkLogin();
     });
 
-    $("#login_button").on("click",function(){
-        checkLogin();
-    });
+    // $("#login_button").on("click",function(){
+    //     checkLogin();
+    // });
 
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/bg_BG/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
+(function(d, s, id){
+ var js, fjs = d.getElementsByTagName(s)[0];
+ if (d.getElementById(id)) {return;}
+ js = d.createElement(s); js.id = id;
+ js.src = "//connect.facebook.net/bg_BG/sdk.js";
+ fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
  
-
-
 </script>
 	</body>
 </html>
