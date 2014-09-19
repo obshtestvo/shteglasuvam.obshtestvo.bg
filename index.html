@@ -246,11 +246,14 @@ jQuery(function($){
           }
           else {
             FB.login(function(){
-            	document.location.reload(true);
+            	
             	FB.ui({
 				  method: 'share',
 				  href: 'http://shteglasuvam.obshtestvo.bg/',
-				}, function(response){});
+				}, function(response){
+					document.location.reload(true);
+					
+				});
             }, {scope: 'email'});
           }   
         });
