@@ -111,11 +111,11 @@ jQuery(function($){
 <tr>
 <td align="center" colspan="2">
 
-<a href="#" role="button" id="login_button" onlogin="fb_login();" style="padding-right:15px;">
+<a href="#" role="button" id="vote" style="padding-right:15px;">
 	<img src="images/Shte-Glasuvam_Button.png" alt="Ще гласувам" width="150" height="35">
 </a>
 
-<a href="#" role="button" id="vote_button" onclick="show_who();" style="padding-right:15px;">
+<a href="#" role="button" id="vote_button" style="padding-right:15px;">
 	<img src="images/Shte-Glasuvam_Button.png" alt="Кой ще гласува" width="150" height="35">
 </a>
 
@@ -214,18 +214,18 @@ jQuery(function($){
 
        console.log("Logged in");
 
-	FB.api('/me/friends', {fields: 'name,id,location,birthday,photos'}, function(response) {
+			FB.api('/me/friends', {fields: 'name,id,location,birthday,photos'}, function(response) {
 
-		var count = response.data.length;
+				var count = response.data.length;
 
-		for (var i = 0; i < (count >= 9?9:count); i++) {
-			
-		// $("#faces").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 2px;\">");
-		$("#faces").prepend("<img src=\"images/Man_Silhouette.png\" style=\"margin: 2px; width: 50px; height: 50px;\">");
-		
-		};
+				for (var i = 0; i < (count >= 9?9:count); i++) {
+					
+				// $("#faces").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 2px;\">");
+				$("#faces").prepend("<img src=\"images/Man_Silhouette.png\" style=\"margin: 2px; width: 50px; height: 50px;\">");
+				
+				};
 
-	});
+			});
 
       } else {
         // $('#vote').hide();
