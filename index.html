@@ -208,11 +208,9 @@ jQuery(function($){
     //Check if logged in
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
-      $('#login_button').hide();
       $('#vote').show();
-      $('#faces').show();
 
-       console.log("Logged in");
+       		console.log("Logged in");
 
 			FB.api('/me/friends', {fields: 'name,id,location,birthday,photos'}, function(response) {
 
@@ -228,7 +226,7 @@ jQuery(function($){
 			});
 
       } else {
-        // $('#vote').hide();
+        $('#faces').show();
         console.log("Logged out");
 
         for (var i = 0; i < 9; i++) {
