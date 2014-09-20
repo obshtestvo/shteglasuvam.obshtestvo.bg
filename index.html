@@ -212,7 +212,7 @@ window.fbAsyncInit = function() {
 		    getFaces();
 		}else if(response.status === 'not_authorized'){
 			console.log("not_authorized");
-			getFaces();
+			getEmptyFaces();
 		}else{
 			console.log("NOT Connected");
 			getEmptyFaces();
