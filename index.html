@@ -208,7 +208,7 @@ window.fbAsyncInit = function() {
 
 	FB.getLoginStatus(function(response) {
 		if (response.status === 'connected') {
-		     getFaces();
+		    getFaces();
 		}else{
 			getEmptyFaces();
 		}
@@ -262,24 +262,30 @@ function AuthCallback() {
 
 //This can be attached to the Login button.  
 function checkLogin(){
-  FB.getLoginStatus(function(response) {
-    if (response.status === 'connected') {
+  	FB.getLoginStatus(function(response) {
+	    if (response.status === 'connected') {
                  
 			console.log("Connected");
 			getFaces();
 
-	}else if(response.status === 'not_authorized'){
-        console.log("Not Autorized");
-        getEmptyFaces();
-        
-		FB.Login("email", AuthCallback);
-		        
-      } else {
+		}else if(response.status === 'not_authorized'){
+	        
+	        console.log("Not Autorized");
+	        getEmptyFaces();
+	        FB.login(function(){
+				document.location.reload(true);	
+			}, {scope: 'email, publish_actions'}, AuthCallback());
+			// FB.Login("email, ", AuthCallback);
+			        
+		} else {
 
-      	$("#faces").text("");
-      	getEmptyFaces();
-        FB.login(function(){}, {scope: 'email'});
-      }   
+			$("#faces").text("");
+			getEmptyFaces();
+			FB.login(function(){
+				document.location.reload(true);	
+			}, {scope: 'email, publish_actions'});
+
+		}   
     });
 }
 
