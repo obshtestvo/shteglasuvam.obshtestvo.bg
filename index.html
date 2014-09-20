@@ -199,93 +199,92 @@ $(document).ready(function(){
 <script type="text/javascript">
  
 //FB Async Init
-    window.fbAsyncInit = function() {
-	    FB.init({
-	      appId      : '501861616625542',
-	      xfbml      : true,
-	      version    : 'v2.1'
-	    }); 
+window.fbAsyncInit = function() {
+	FB.init({
+	  appId      : '501861616625542',
+	  xfbml      : true,
+	  version    : 'v2.1'
+	}); 
 
-	    for (var i = 0; i < 9; i++) {
-			$("#faces").prepend("<img src=\"images/Man_Silhouette.png\" style=\"margin: 2px; width: 50px; height: 50px;\">");	
+	FB.getLoginStatus(function(response) {
+	if (response.status === 'connected') {
+	     getFaces();
+	}else{
+		getEmptyFaces();
+	}
+};    //FB Async Init    
+
+
+function getFaces(){
+	FB.api('/me/friends', {fields: 'name,id,location,birthday,photos'}, function(response) {
+		var count = response.data.length;
+		$("#faces").text("");
+		for (var i = 0; i < (count >= 9?9:count); i++) {
+			$("#faces").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 2px;\">");
 		};
+	});
+}
 
-      };    //FB Async Init    
+function getEmptyFaces(){
+	$("#faces").text("");
+    for (var i = 0; i < 9; i++) {
+		$("#faces").prepend("<img src=\"images/Man_Silhouette.png\" style=\"margin: 2px; width: 50px; height: 50px;\">");		
+	};
+}
 
+//This can be attached to the Login button.  
+function checkLogin(){
+  FB.getLoginStatus(function(response) {
+    if (response.status === 'connected') {
+                 
+			console.log("Connected");
+			getFaces();
 
-    //This can be attached to the Login button.  
-    function checkLogin(){
-      FB.getLoginStatus(function(response) {
-          if (response.status === 'connected') {
-                     
-    			console.log("Connected");
-    			FB.api('/me/friends', {fields: 'name,id,location,birthday,photos'}, function(response) {
-
-					var count = response.data.length;
-
-					$("#faces").text("");
-					for (var i = 0; i < (count >= 9?9:count); i++) {
-						
-					$("#faces").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 2px;\">");
-					
-					};
-
+	}else if(response.status === 'not_authorized'){
+        console.log("Not Autorized");
+        getEmptyFaces()
+        
+		function AuthCallback(FBResult result) {
+		    if(FB.IsLoggedIn) {
+		        $.ajax({
+				url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=increment"
+				}).done(function(data){
+					increment(data);
 				});
 
-
-    	}else if(response.status === 'not_authorized'){
-	    	$('#faces').show();
-	        console.log("Not Autorized");
-
-	        $("#faces").text("");
-	        for (var i = 0; i < 9; i++) {
-				$("#faces").prepend("<img src=\"images/Man_Silhouette.png\" style=\"margin: 2px; width: 50px; height: 50px;\">");		
-			};
-
-			
-			function AuthCallback(FBResult result) {
-			    if(FB.IsLoggedIn) {
-			        $.ajax({
-					url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=increment"
-					}).done(function(data){
-						increment(data);
+				var data=
+					{
+						message: "Аз ще гласувам! Твоят глас не е важен само за изборите, а е важен и преди тях за да покаже на хората, че и други гласуват. Включи се в кампанията на http://shteglasuvam.obshtestvo.bg",
+						display: 'iframe',
+						caption: "Caption",
+						name: "ЩE ГЛАСУВАМ",  
+						picture: 'http://shteglasuvam.obshtestvo.bg/fb_logo.jpg',    
+						link: "http://shteglasuvam.obshtestvo.bg",  // Go here if user click the picture
+						description: "Ще гласувам е независима кампания, целяща да увеличи избирателната активност и да покаже, че твоя глас има силата да стори промяна",
+						actions: [{ name: 'action_links text!', link: 'http://shteglasuvam.obshtestvo.bg' }],			
+					} 
+					FB.api('/me/feed', 'post', data, function(){
+						document.location.reload(true);			
 					});
+		    } else {
+		        Debug.Log("User cancelled login");
+		    }
+		}
+		FB.Login("email", AuthCallback);
+		        
+      } else {
 
-					var data=
-						{
-							message: "Аз ще гласувам! Твоят глас не е важен само за изборите, а е важен и преди тях за да покаже на хората, че и други гласуват. Включи се в кампанията на http://shteglasuvam.obshtestvo.bg",
-							display: 'iframe',
-							caption: "Caption",
-							name: "ЩE ГЛАСУВАМ",  
-							picture: 'http://shteglasuvam.obshtestvo.bg/fb_logo.jpg',    
-							link: "http://shteglasuvam.obshtestvo.bg",  // Go here if user click the picture
-							description: "Ще гласувам е независима кампания, целяща да увеличи избирателната активност и да покаже, че твоя глас има силата да стори промяна",
-							actions: [{ name: 'action_links text!', link: 'http://shteglasuvam.obshtestvo.bg' }],			
-						} 
-						FB.api('/me/feed', 'post', data, function(){
-							document.location.reload(true);			
-						});
-			    } else {
-			        Debug.Log("User cancelled login");
-			    }
-			}
-			FB.Login("email", AuthCallback);
-			        
-          } else {
-
-          	$("#faces").text("");
-          	for (var i = 0; i < 9; i++) {
-				$("#faces").prepend("<img src=\"images/Man_Silhouette.png\" style=\"margin: 2px; width: 50px; height: 50px;\">");	
-			};
-            FB.login(function(){}, {scope: 'email'});
-          }   
-        });
-    }
+      	$("#faces").text("");
+      	getEmptyFaces();
+        FB.login(function(){}, {scope: 'email'});
+      }   
+    });
+}
 
       
-    $("#vote").on("click",function(){
-        checkLogin();
-    });
+$("#vote").on("click",function(){
+    checkLogin();
+});
 
 (function(d, s, id){
  var js, fjs = d.getElementsByTagName(s)[0];
