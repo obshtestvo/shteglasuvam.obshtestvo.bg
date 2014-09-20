@@ -223,6 +223,7 @@ $(document).ready(function(){
 
 					var count = response.data.length;
 
+					$("#faces").text("");
 					for (var i = 0; i < (count >= 9?9:count); i++) {
 						
 					$("#faces").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 2px;\">");
@@ -236,11 +237,12 @@ $(document).ready(function(){
 	    	$('#faces').show();
 	        console.log("Not Autorized");
 
+	        $("#faces").text("");
 	        for (var i = 0; i < 9; i++) {
 				$("#faces").prepend("<img src=\"images/Man_Silhouette.png\" style=\"margin: 2px; width: 50px; height: 50px;\">");		
 			};
 
-			if(FB.IsLoggedIn) {
+			
 			        
 		    	$.ajax({
 				url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=increment"
@@ -262,14 +264,14 @@ $(document).ready(function(){
 					FB.api('/me/feed', 'post', data, function(){
 						document.location.reload(true);			
 					});
-			}
+			
 
-			FB.Login("email", AuthCallback);
-
+	
 				
 
           } else {
 
+          	$("#faces").text("");
           	for (var i = 0; i < 9; i++) {
 				$("#faces").prepend("<img src=\"images/Man_Silhouette.png\" style=\"margin: 2px; width: 50px; height: 50px;\">");	
 			};
