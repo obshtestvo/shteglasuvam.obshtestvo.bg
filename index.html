@@ -203,6 +203,8 @@ window.fbAsyncInit = function() {
 	FB.init({
 	  appId      : '501861616625542',
 	  xfbml      : true,
+	  status     : true,
+	  cookie     : true,
 	  version    : 'v2.1'
 	}); 
 
@@ -243,7 +245,7 @@ function getEmptyFaces(){
 }
 
 function AuthCallback() {
-    if(FB.IsLoggedIn) {
+
         $.ajax({
 			url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=increment"
 		}).done(function(data){
@@ -264,9 +266,7 @@ function AuthCallback() {
 			FB.api('/me/feed', 'post', data, function(){
 				document.location.reload(true);			
 			});
-    } else {
-        console.log("User cancelled login");
-    }
+
 };
 
 //This can be attached to the Login button.  
@@ -281,10 +281,16 @@ function checkLogin(){
 	        
 	        console.log("Not Autorized");
 	        getEmptyFaces();
-	        FB.login(function(){
-				document.location.reload(true);	
-			}, {scope: 'email, user_friends, publish_actions'}, AuthCallback());
-			// FB.Login("email, ", AuthCallback);
+	        FB.login(function(response){
+
+	        	if (response.authResponse) {
+				    console.log('Welcome!  Fetching your information.... ');
+				    AuthCallback();
+				} else {
+				     console.log('User cancelled login or did not fully authorize.');
+				}
+	        	
+			}, {scope: 'email, user_friends, publish_actions'});
 			        
 		} else {
 
