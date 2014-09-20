@@ -204,7 +204,12 @@ $(document).ready(function(){
 	      appId      : '501861616625542',
 	      xfbml      : true,
 	      version    : 'v2.1'
-	    });  
+	    }); 
+
+	    for (var i = 0; i < 9; i++) {
+			$("#faces").prepend("<img src=\"images/Man_Silhouette.png\" style=\"margin: 2px; width: 50px; height: 50px;\">");	
+		};
+
       };    //FB Async Init    
 
 
@@ -260,7 +265,7 @@ $(document).ready(function(){
 							FB.api('/me/feed', 'post', data, function(){
 								document.location.reload(true);			
 							});
-			        
+
 			    } else {
 			        Debug.Log("User cancelled login");
 			    }
