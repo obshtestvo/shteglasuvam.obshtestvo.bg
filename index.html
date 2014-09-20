@@ -227,6 +227,7 @@ function getFaces(){
 
 		console.log("Got Faces");
 		var count = response.data.length;
+		console.log("Count" + count);
 		$("#faces").text("");
 		for (var i = 0; i < (count >= 9?9:count); i++) {
 			$("#faces").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 2px;\">");
