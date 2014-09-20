@@ -207,10 +207,11 @@ window.fbAsyncInit = function() {
 	}); 
 
 	FB.getLoginStatus(function(response) {
-	if (response.status === 'connected') {
-	     getFaces();
-	}else{
-		getEmptyFaces();
+		if (response.status === 'connected') {
+		     getFaces();
+		}else{
+			getEmptyFaces();
+		}
 	}
 };    //FB Async Init    
 
