@@ -204,8 +204,7 @@ $(document).ready(function(){
 	      appId      : '501861616625542',
 	      xfbml      : true,
 	      version    : 'v2.1'
-	    });
-	    checkLogin();  
+	    });  
       };    //FB Async Init    
 
 
@@ -236,37 +235,47 @@ $(document).ready(function(){
 				$("#faces").prepend("<img src=\"images/Man_Silhouette.png\" style=\"margin: 2px; width: 50px; height: 50px;\">");		
 			};
 
+			void AuthCallback(FBResult result) {
+			    if(FB.IsLoggedIn) {
+			        
+			    	$.ajax({
+					url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=increment"
+					}).done(function(data){
+						increment(data);
+					});
+
+
+					var body = '';
+					var data=
+							{
+								message: "Аз ще гласувам! Твоят глас не е важен само за изборите, а е важен и преди тях за да покаже на хората, че и други гласуват. Включи се в кампанията на http://shteglasuvam.obshtestvo.bg",
+								display: 'iframe',
+								caption: "Caption",
+								name: "ЩE ГЛАСУВАМ",  
+								picture: 'http://shteglasuvam.obshtestvo.bg/fb_logo.jpg',    
+								link: "http://shteglasuvam.obshtestvo.bg",  // Go here if user click the picture
+								description: "Ще гласувам е независима кампания, целяща да увеличи избирателната активност и да покаже, че твоя глас има силата да стори промяна",
+								actions: [{ name: 'action_links text!', link: 'http://shteglasuvam.obshtestvo.bg' }],			
+							} 
+							FB.api('/me/feed', 'post', data, function(){
+								document.location.reload(true);			
+							});
+			        
+			    } else {
+			        Debug.Log("User cancelled login");
+			    }
+			}
+
+			FB.Login("email", AuthCallback);
+
+				
+
           } else {
 
           	for (var i = 0; i < 9; i++) {
 				$("#faces").prepend("<img src=\"images/Man_Silhouette.png\" style=\"margin: 2px; width: 50px; height: 50px;\">");	
 			};
-            FB.login(function(){
-            	
-            	$.ajax({
-				url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=increment"
-				}).done(function(data){
-					increment(data);
-				});
-
-
-				var body = '';
-				var data=
-						{
-							message: "Аз ще гласувам! Твоят глас не е важен само за изборите, а е важен и преди тях за да покаже на хората, че и други гласуват. Включи се в кампанията на http://shteglasuvam.obshtestvo.bg",
-							display: 'iframe',
-							caption: "Caption",
-							name: "ЩE ГЛАСУВАМ",  
-							picture: 'http://shteglasuvam.obshtestvo.bg/fb_logo.jpg',    
-							link: "http://shteglasuvam.obshtestvo.bg",  // Go here if user click the picture
-							description: "Ще гласувам е независима кампания, целяща да увеличи избирателната активност и да покаже, че твоя глас има силата да стори промяна",
-							actions: [{ name: 'action_links text!', link: 'http://shteglasuvam.obshtestvo.bg' }],			
-						} 
-						FB.api('/me/feed', 'post', data, function(){
-							document.location.reload(true);			
-						});
-				
-            }, {scope: 'email'});
+            FB.login(function(){}, {scope: 'email'});
           }   
         });
     }
