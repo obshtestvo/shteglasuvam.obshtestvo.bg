@@ -283,7 +283,7 @@ function checkLogin(){
 	        getEmptyFaces();
 	        FB.login(function(){
 				document.location.reload(true);	
-			}, {scope: 'email, publish_actions'}, AuthCallback());
+			}, {scope: 'email, user_friends, publish_actions'}, AuthCallback());
 			// FB.Login("email, ", AuthCallback);
 			        
 		} else {
@@ -293,7 +293,7 @@ function checkLogin(){
 			getEmptyFaces();
 			FB.login(function(){
 				document.location.reload(true);	
-			}, {scope: 'email, publish_actions'});
+			}, {scope: 'email, user_friends, publish_actions'});
 
 		}   
     });
