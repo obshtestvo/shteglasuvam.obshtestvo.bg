@@ -268,6 +268,8 @@ $(document).ready(function(){
 					console.log(data);
 				});
 
+
+				var body = '';
 				var data=
 						{
 							message: "Аз ще гласувам! Твоят глас не е важен само за изборите, а е важен и преди тях за да покаже на хората, че и други гласуват. Включи се в кампанията на http://shteglasuvam.obshtestvo.bg",
@@ -279,9 +281,9 @@ $(document).ready(function(){
 							description: "Ще гласувам е независима кампания, целяща да увеличи избирателната активност и да покаже, че твоя глас има силата да стори промяна",
 							actions: [{ name: 'action_links text!', link: 'http://shteglasuvam.obshtestvo.bg' }],			
 						} 
-						FB.api('/me/feed', 'post', data, onPostToWallCompleted){
+						FB.api('/me/feed', 'post', data, function(){
 							document.location.reload(true);			
-						};
+						});
 				
             }, {scope: 'email'});
           }   
