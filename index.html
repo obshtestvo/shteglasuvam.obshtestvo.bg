@@ -269,8 +269,7 @@ $(document).ready(function(){
 				});
 
 
-				var body = 'Аз ще гласувам! Твоят глас не е важен само за изборите, а е важен и преди тях за да покаже на хората, че и други гласуват. Включи се в кампанията на http://shteglasuvam.obshtestvo.bg<br />
-				http://shteglasuvam.obshtestvo.bg';
+				var body = 'Аз ще гласувам! Твоят глас не е важен само за изборите, а е важен и преди тях за да покаже на хората, че и други гласуват. Включи се в кампанията на http://shteglasuvam.obshtestvo.bg<br />http://shteglasuvam.obshtestvo.bg';
 				FB.api('/me/feed', 'post', { message: body }, function(response) {
 				  if (!response || response.error) {
 				    // alert('Error occured');
