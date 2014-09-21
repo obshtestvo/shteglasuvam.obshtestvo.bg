@@ -32,8 +32,7 @@
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 
-<style>
-	
+
 <style type="text/css">
 .voting {
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -175,12 +174,12 @@ $(document).ready(function(){
 	Ще гласувам
 </a>
 
-<a href="#" role="button" id="willvote" class="voting" style="padding-right:15px; width: 150px; height: 35px;">
+<a href="#" role="button" id="login_vote" class="voting" style="padding-right:15px; width: 150px; height: 35px;">
 	Ще гласувам
 </a>
 
 <a href="#" role="button" id="whowillvote" class="voting" style="padding-right:15px; width: 150px; height: 35px;">
-	Кой Ще гласувам
+	Кой Ще гласува?
 </a>
 
 </td>
@@ -379,8 +378,12 @@ function checkLogin(){
     });
 }
 
+
+$("#vote").on("click",function(){
+    checkLogin();
+});
       
-$("#willvote").on("click",function(){
+$("#login_vote").on("click",function(){
     postDialog();
 });
 
@@ -388,9 +391,7 @@ $("#whowillvote").on("click",function(){
     checkLogin();
 });
 
-$("#vote").on("click",function(){
-    checkLogin();
-});
+
 
 (function(d, s, id){
  var js, fjs = d.getElementsByTagName(s)[0];
