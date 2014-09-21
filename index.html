@@ -34,7 +34,7 @@
 
 <style>
 	
-	<style type="text/css">
+<style type="text/css">
 .voting {
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -79,7 +79,6 @@
 	position:relative;
 	top:1px;
 }</style>
-/* This button was generated using CSSButtonGenerator.com */
 
 </style>
 <script>
@@ -172,12 +171,16 @@ $(document).ready(function(){
 <tr>
 <td align="center" colspan="2">
 
-<a href="#" role="button" id="vote" class="voting" onlogin="checkLoginState();" style="padding-right:15px; width: 150px; height: 35px;">
+<a href="#" role="button" id="vote" class="voting" style="padding-right:15px; width: 150px; height: 35px;">
 	Ще гласувам
 </a>
 
-<a href="#" role="button" id="willvote" class="voting" onlogin="checkLoginState();" style="padding-right:15px; width: 150px; height: 35px;">
+<a href="#" role="button" id="willvote" class="voting" style="padding-right:15px; width: 150px; height: 35px;">
 	Ще гласувам
+</a>
+
+<a href="#" role="button" id="whowillvote" class="voting" style="padding-right:15px; width: 150px; height: 35px;">
+	Кой Ще гласувам
 </a>
 
 </td>
@@ -379,6 +382,10 @@ function checkLogin(){
       
 $("#willvote").on("click",function(){
     postDialog();
+});
+
+$("#whowillvote").on("click",function(){
+    checkLogin();
 });
 
 $("#vote").on("click",function(){
