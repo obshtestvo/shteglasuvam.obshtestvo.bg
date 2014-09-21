@@ -31,6 +31,57 @@
 			<link rel="stylesheet" href="css/style-normal.css" />
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+
+<style>
+	
+	<style type="text/css">
+.voting {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #96d600), color-stop(1, #96d600) );
+	background:-moz-linear-gradient( center top, #96d600 5%, #96d600 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#96d600', endColorstr='#96d600');
+	background-color:#96d600;
+	-webkit-border-top-left-radius:6px;
+	-moz-border-radius-topleft:6px;
+	border-top-left-radius:6px;
+	-webkit-border-top-right-radius:6px;
+	-moz-border-radius-topright:6px;
+	border-top-right-radius:6px;
+	-webkit-border-bottom-right-radius:6px;
+	-moz-border-radius-bottomright:6px;
+	border-bottom-right-radius:6px;
+	-webkit-border-bottom-left-radius:6px;
+	-moz-border-radius-bottomleft:6px;
+	border-bottom-left-radius:6px;
+	text-indent:0;
+	border:1px solid #96d600;
+	display:inline-block;
+	color:#474747;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+	height:50px;
+	line-height:50px;
+	width:100px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #ffffff;
+}
+.voting:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #96d600), color-stop(1, #96d600) );
+	background:-moz-linear-gradient( center top, #96d600 5%, #96d600 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#96d600', endColorstr='#96d600');
+	background-color:#96d600;
+}.voting:active {
+	position:relative;
+	top:1px;
+}</style>
+/* This button was generated using CSSButtonGenerator.com */
+
+</style>
 <script>
 function increment(i){
 	$('#retroclockbox_counter').flipcountdown({size:'sm',
@@ -121,12 +172,12 @@ $(document).ready(function(){
 <tr>
 <td align="center" colspan="2">
 
-<a href="#" role="button" id="vote" onlogin="checkLoginState();" style="padding-right:15px;">
-	<img src="images/Shte-Glasuvam_Button.png" alt="Ще гласувам" width="150" height="35">
+<a href="#" role="button" id="vote" class="voting" onlogin="checkLoginState();" style="padding-right:15px; width: 150px; height: 35px;">
+	Ще гласувам
 </a>
 
-<a href="#" role="button" id="vote_button" style="padding-right:15px;">
-	<img src="images/Shte-Glasuvam_Button.png" alt="Кой ще гласува" width="150" height="35">
+<a href="#" role="button" id="willvote" class="voting" onlogin="checkLoginState();" style="padding-right:15px; width: 150px; height: 35px;">
+	Ще гласувам
 </a>
 
 </td>
@@ -244,30 +295,50 @@ function getEmptyFaces(){
 	};
 }
 
-function AuthCallback() {
+// function AuthCallback() {
 
-        $.ajax({
-			url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=increment"
-		}).done(function(data){
-			increment(data);
-		});
+//         $.ajax({
+// 			url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=increment"
+// 		}).done(function(data){
+// 			increment(data);
+// 		});
 
-		var data=
-			{
-				message: "Аз ще гласувам! Твоят глас не е важен само за изборите, а е важен и преди тях за да покаже на хората, че и други гласуват. Включи се в кампанията на http://shteglasuvam.obshtestvo.bg",
-				display: 'iframe',
-				caption: "Caption",
-				name: "ЩE ГЛАСУВАМ",  
-				picture: 'http://shteglasuvam.obshtestvo.bg/fb_logo.jpg',    
-				link: "http://shteglasuvam.obshtestvo.bg",  // Go here if user click the picture
-				description: "Ще гласувам е независима кампания, целяща да увеличи избирателната активност и да покаже, че твоя глас има силата да стори промяна",
-				actions: [{ name: 'action_links text!', link: 'http://shteglasuvam.obshtestvo.bg' }],			
-			} 
-			FB.api('/me/feed', 'post', data, function(){
-				document.location.reload(true);			
+// 		var data=
+// 			{
+// 				message: "Аз ще гласувам! Твоят глас не е важен само за изборите, а е важен и преди тях за да покаже на хората, че и други гласуват. Включи се в кампанията на http://shteglasuvam.obshtestvo.bg",
+// 				display: 'iframe',
+// 				caption: "Caption",
+// 				name: "ЩE ГЛАСУВАМ",  
+// 				picture: 'http://shteglasuvam.obshtestvo.bg/fb_logo.jpg',    
+// 				link: "http://shteglasuvam.obshtestvo.bg",  // Go here if user click the picture
+// 				description: "Ще гласувам е независима кампания, целяща да увеличи избирателната активност и да покаже, че твоя глас има силата да стори промяна",
+// 				actions: [{ name: 'action_links text!', link: 'http://shteglasuvam.obshtestvo.bg' }],			
+// 			} 
+// 			FB.api('/me/feed', 'post', data, function(){
+// 				document.location.reload(true);			
+// 			});
+
+// };
+
+function postDialog(){
+		FB.ui({
+		  	method: 'feed',
+		  	app_id: '501861616625542',
+			link: 'http://shteglasuvam.obshtestvo.bg',
+			picture: 'http://shteglasuvam.obshtestvo.bg/fb_logo.jpg',
+			name: "ЩE ГЛАСУВАМ",
+			caption: "Аз ще гласувам! Твоят глас не е важен само за изборите, а е важен и преди тях за да покаже на хората, че и други гласуват. Включи се в кампанията на http://shteglasuvam.obshtestvo.bg",		
+			description: "Ще гласувам е независима кампания, целяща да увеличи избирателната активност и да покаже, че твоя глас има силата да стори промяна",
+			actions: [{ name: 'action_links text!', link: 'http://shteglasuvam.obshtestvo.bg' }]
+		  	
+		}, function(response){
+			$.ajax({
+				url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=increment"
+			}).done(function(data){
+				increment(data);
 			});
-
-};
+		});
+}
 
 //This can be attached to the Login button.  
 function checkLogin(){
@@ -285,7 +356,7 @@ function checkLogin(){
 
 	        	if (response.authResponse) {
 				    console.log('Welcome!  Fetching your information.... ');
-				    AuthCallback();
+				    postDialog();
 				} else {
 				     console.log('User cancelled login or did not fully authorize.');
 				}
@@ -306,6 +377,10 @@ function checkLogin(){
 }
 
       
+$("#willvote").on("click",function(){
+    postDialog();
+});
+
 $("#vote").on("click",function(){
     checkLogin();
 });
