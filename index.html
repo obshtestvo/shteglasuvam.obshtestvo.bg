@@ -285,7 +285,7 @@ window.fbAsyncInit = function() {
 	  xfbml      : true,
 	  status     : true,
 	  cookie     : true,
-	  version    : 'v2.0'
+	  version    : 'v2.1'
 	}); 
 
 	FB.getLoginStatus(function(response) {
@@ -341,9 +341,10 @@ function getEmptyFaces(){
 function postDialog(){
 	console.log('Post dialog popup.');
 	FB.ui({
-	  	method: 'feed',
+	  	method: 'share',
 	  	app_id: '501861616625542',
-		link: 'http://shteglasuvam.obshtestvo.bg',
+	  	display: 'iframe',
+		href: 'http://shteglasuvam.obshtestvo.bg',
 		picture: 'http://shteglasuvam.obshtestvo.bg/fb_logo.jpg',
 		name: "ЩE ГЛАСУВАМ",
 		caption: "Аз ще гласувам! Твоят глас не е важен само за изборите, а е важен и преди тях за да покаже на хората, че и други гласуват. Включи се в кампанията на http://shteglasuvam.obshtestvo.bg",		
