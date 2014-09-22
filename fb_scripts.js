@@ -135,7 +135,7 @@ function getFaces(){
 
 function getEmptyFaces(){
   $("#faces").text("");
-  $("#faces").prepend("<img src=\"images/faces.jpg\" style=\"width: 220px;\">");   
+  // $("#faces").prepend("<img src=\"images/faces.jpg\" style=\"width: 220px;\">");   
   // for (var i = 0; i < 9; i++) {
   //   $("#faces").prepend("<img src=\"images/Man_Silhouette.png\" style=\"margin: 2px; width: 50px; height: 50px;\">");   
   // };
