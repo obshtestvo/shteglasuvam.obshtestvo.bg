@@ -360,10 +360,10 @@ function checkLogin(){
 				    console.log('Welcome!  Fetching your information.... ');
 				    postDialog();
 				} else {
-				     console.log('User cancelled login or did not fully authorize.');
+				    console.log('User cancelled login or did not fully authorize.');
 				}
 	        	
-			}, {scope: 'email, user_friends, publish_actions'});
+			}, {scope: 'user_friends'});
 			        
 		} else {
 
@@ -372,7 +372,35 @@ function checkLogin(){
 			getEmptyFaces();
 			FB.login(function(){
 				document.location.reload(true);	
-			}, {scope: 'email, user_friends, publish_actions'});
+			}, {scope: 'user_friends'});
+
+		}   
+    });
+}
+
+
+//This can be attached to the Login button.  
+function who(){
+  	FB.getLoginStatus(function(response) {
+	    if (response.status === 'connected') {
+                 
+			console.log("Connected");
+			getFaces();
+
+		}else if(response.status === 'not_authorized'){
+	        
+	        console.log("Not Autorized");
+	        getEmptyFaces();
+	        FB.login(function(response){}, {scope: 'user_friends'});
+			        
+		} else {
+
+			console.log("NOT CONNECTED");
+			$("#faces").text("");
+			getEmptyFaces();
+			FB.login(function(){
+				document.location.reload(true);	
+			}, {scope: 'user_friends'});
 
 		}   
     });
@@ -388,7 +416,7 @@ $("#login_vote").on("click",function(){
 });
 
 $("#whowillvote").on("click",function(){
-    checkLogin();
+    who();
 });
 
 
