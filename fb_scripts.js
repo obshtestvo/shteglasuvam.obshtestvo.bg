@@ -125,7 +125,7 @@ function getFaces(){
     // console.log("Got Faces");
     var count = response.data.length;
     // console.log("Count" + count);
-    console.log(response.data[0].name);
+    // console.log(response.data[0].name);
     $("#faces").text("");
     for (var i = 0; i < (count >= 9?9:count); i++) {
       $("#faces").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 2px;\">");
@@ -147,7 +147,7 @@ function postDialog(){
       method: 'feed',
       app_id: '501861616625542',
     link: location.protocol + '//' + location.host + '/',
-    picture: location.protocol + '//' + location.host + '/' + "fb_logo.jpg',
+    picture: location.protocol + '//' + location.host + '/' + "fb_logo.jpg",
     name: "ЩE ГЛАСУВАМ",
     caption: "Аз ще гласувам! Твоят глас не е важен само за изборите, а е важен и преди тях за да покаже на хората, че и други гласуват. Включи се в кампанията на http://shteglasuvam.obshtestvo.bg",    
     description: "Ще гласувам е независима кампания, целяща да увеличи избирателната активност и да покаже, че твоя глас има силата да стори промяна",
