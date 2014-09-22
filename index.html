@@ -438,7 +438,11 @@ function who(){
 	        
 	        console.log("Not Autorized");
 	        getEmptyFaces();
-	        FB.login(function(response){}, {scope: 'user_friends'});
+	        FB.login(function(response){
+	        	if (response.status === 'connected') {
+	        		document.location.reload(true);	
+	        	}
+	        }, {scope: 'user_friends'});
 			        
 		} else {
 
