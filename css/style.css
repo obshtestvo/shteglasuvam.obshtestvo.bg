@@ -12,6 +12,20 @@
 /* Basic                                                                         */
 /*********************************************************************************/
 
+.mfp-hide {
+    display: none !important;
+}
+.white-popup-block {
+    background: none repeat scroll 0 0 #fff;
+    margin: 40px auto;
+    max-width: 650px;
+    padding: 20px 30px;
+    position: relative;
+    text-align: left;
+	font-size:small;
+	line-height: 130%;
+}
+
 	body {
 		background: #fff;
 	}
