@@ -267,7 +267,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#vote").hide();
-  	// $("#login_vote").hide();
+  	$("#login_vote").hide();
   	$("#whowillvote").hide();
   	$("#badge").hide();
 
@@ -375,7 +375,23 @@ function checkLogin(){
 
 	        	if (response.status === 'connected') {
 				    console.log('Welcome!  Fetching your information.... ');
-				    postDialog();
+				    FB.ui({
+					  	method: 'feed',
+					  	app_id: '501861616625542',
+						link: 'http://shteglasuvam.obshtestvo.bg',
+						picture: 'http://shteglasuvam.obshtestvo.bg/fb_logo.jpg',
+						name: "ЩE ГЛАСУВАМ",
+						caption: "Аз ще гласувам! Твоят глас не е важен само за изборите, а е важен и преди тях за да покаже на хората, че и други гласуват. Включи се в кампанията на http://shteglasuvam.obshtestvo.bg",		
+						description: "Ще гласувам е независима кампания, целяща да увеличи избирателната активност и да покаже, че твоя глас има силата да стори промяна",
+						actions: [{ name: 'action_links text!', link: 'http://shteglasuvam.obshtestvo.bg' }]
+					  	
+					}, function(response){
+						$.ajax({
+							url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=increment"
+						}).done(function(data){
+							increment(data);
+						});
+					});
 				} else {
 				    console.log('User cancelled login or did not fully authorize.');
 				}
