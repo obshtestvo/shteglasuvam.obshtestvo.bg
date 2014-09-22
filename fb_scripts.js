@@ -5,7 +5,7 @@ $(document).ready(function(){
     $("#badge").hide();
 
   $.ajax({
-  url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=check"
+  url: location.protocol + '//' + location.host + '/' + "counter.php?m=check"
   }).done(function(data){
     increment(data);
     // console.log(data);
@@ -135,7 +135,7 @@ function getFaces(){
 
 function getEmptyFaces(){
   $("#faces").text("");
-  $("#faces").prepend("<img src=\"images/faces.jpg\">");   
+  $("#faces").prepend("<img src=\"images/faces.jpg\" style=\"width: 220px;\">");   
   // for (var i = 0; i < 9; i++) {
   //   $("#faces").prepend("<img src=\"images/Man_Silhouette.png\" style=\"margin: 2px; width: 50px; height: 50px;\">");   
   // };
@@ -146,8 +146,8 @@ function postDialog(){
   FB.ui({
       method: 'feed',
       app_id: '501861616625542',
-    link: 'http://shteglasuvam.obshtestvo.bg',
-    picture: 'http://shteglasuvam.obshtestvo.bg/fb_logo.jpg',
+    link: location.protocol + '//' + location.host + '/',
+    picture: location.protocol + '//' + location.host + '/' + "fb_logo.jpg',
     name: "ЩE ГЛАСУВАМ",
     caption: "Аз ще гласувам! Твоят глас не е важен само за изборите, а е важен и преди тях за да покаже на хората, че и други гласуват. Включи се в кампанията на http://shteglasuvam.obshtestvo.bg",    
     description: "Ще гласувам е независима кампания, целяща да увеличи избирателната активност и да покаже, че твоя глас има силата да стори промяна",
@@ -155,7 +155,7 @@ function postDialog(){
       
   }, function(response){
     $.ajax({
-      url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=increment"
+      url: location.protocol + '//' + location.host + '/' + "counter.php?m=increment"
     }).done(function(data){
       increment(data);
       docCookies.setItem("voted", "true", Infinity);
