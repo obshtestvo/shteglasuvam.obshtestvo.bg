@@ -79,26 +79,6 @@
 	top:1px;
 }</style>
 
-</style>
-<script>
-function increment(i){
-	$('#retroclockbox_counter').flipcountdown({size:'sm',
-		tick:function(){
-			return i;
-		}
-	});
-}
-
-
-$(document).ready(function(){
-	$.ajax({
-	url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=check"
-	}).done(function(data){
-		increment(data);
-		console.log(data);
-	});
-
-});
 
 </script>
 	
@@ -285,12 +265,18 @@ $(document).ready(function(){
 
 
 <script type="text/javascript">
- 
 $(document).ready(function(){
-			$("#vote").hide();
-		  	$("#login_vote").hide();
-		  	$("#whowillvote").hide();
-		  	$("#badge").hide();
+	$("#vote").hide();
+  	// $("#login_vote").hide();
+  	$("#whowillvote").hide();
+  	$("#badge").hide();
+
+	$.ajax({
+	url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=check"
+	}).done(function(data){
+		increment(data);
+		console.log(data);
+	});
 });
 //FB Async Init
 window.fbAsyncInit = function() {
@@ -323,6 +309,14 @@ window.fbAsyncInit = function() {
 };    //FB Async Init    
 
 
+function increment(i){
+	$('#retroclockbox_counter').flipcountdown({size:'sm',
+		tick:function(){
+			return i;
+		}
+	});
+}
+
 function getFaces(){
 	console.log("Getting Faces");
 	FB.api('/me/friends', {fields: 'name,id,location,birthday,photos'}, function(response) {
@@ -344,50 +338,25 @@ function getEmptyFaces(){
 	};
 }
 
-// function AuthCallback() {
-
-//         $.ajax({
-// 			url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=increment"
-// 		}).done(function(data){
-// 			increment(data);
-// 		});
-
-// 		var data=
-// 			{
-// 				message: "www.shteglasuvam.com",
-// 				display: 'iframe',
-// 				caption: "Caption",
-// 				name: "ЩE ГЛАСУВАМ",  
-// 				picture: 'http://shteglasuvam.obshtestvo.bg/fb_logo.jpg',    
-// 				link: "http://shteglasuvam.obshtestvo.bg",  // Go here if user click the picture
-// 				description: "Ще гласувам е независима кампания, целяща да увеличи избирателната активност и да покаже, че твоя глас има силата да стори промяна",
-// 				actions: [{ name: 'ЩЕ ГЛАСУВАМ', link: 'http://shteglasuvam.obshtestvo.bg' }],			
-// 			} 
-// 			FB.api('/me/feed', 'post', data, function(){
-// 				document.location.reload(true);			
-// 			});
-
-// };
-
 function postDialog(){
 	console.log('Post dialog popup.');
-		FB.ui({
-		  	method: 'feed',
-		  	app_id: '501861616625542',
-			link: 'http://shteglasuvam.obshtestvo.bg',
-			picture: 'http://shteglasuvam.obshtestvo.bg/fb_logo.jpg',
-			name: "ЩE ГЛАСУВАМ",
-			caption: "Аз ще гласувам! Твоят глас не е важен само за изборите, а е важен и преди тях за да покаже на хората, че и други гласуват. Включи се в кампанията на http://shteglasuvam.obshtestvo.bg",		
-			description: "Ще гласувам е независима кампания, целяща да увеличи избирателната активност и да покаже, че твоя глас има силата да стори промяна",
-			actions: [{ name: 'action_links text!', link: 'http://shteglasuvam.obshtestvo.bg' }]
-		  	
-		}, function(response){
-			$.ajax({
-				url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=increment"
-			}).done(function(data){
-				increment(data);
-			});
+	FB.ui({
+	  	method: 'feed',
+	  	app_id: '501861616625542',
+		link: 'http://shteglasuvam.obshtestvo.bg',
+		picture: 'http://shteglasuvam.obshtestvo.bg/fb_logo.jpg',
+		name: "ЩE ГЛАСУВАМ",
+		caption: "Аз ще гласувам! Твоят глас не е важен само за изборите, а е важен и преди тях за да покаже на хората, че и други гласуват. Включи се в кампанията на http://shteglasuvam.obshtestvo.bg",		
+		description: "Ще гласувам е независима кампания, целяща да увеличи избирателната активност и да покаже, че твоя глас има силата да стори промяна",
+		actions: [{ name: 'action_links text!', link: 'http://shteglasuvam.obshtestvo.bg' }]
+	  	
+	}, function(response){
+		$.ajax({
+			url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=increment"
+		}).done(function(data){
+			increment(data);
 		});
+	});
 }
 
 //This can be attached to the Login button.  
