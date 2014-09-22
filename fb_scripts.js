@@ -122,9 +122,10 @@ function getFaces(){
   // console.log("Getting Faces");
   FB.api('/me/friends', {fields: 'name,photos'}, function(response) {
 
-    console.log("Got Faces");
+    // console.log("Got Faces");
     var count = response.data.length;
-    console.log("Count" + count);
+    // console.log("Count" + count);
+    console.log(response.data[0].name);
     $("#faces").text("");
     for (var i = 0; i < (count >= 9?9:count); i++) {
       $("#faces").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 2px;\">");
