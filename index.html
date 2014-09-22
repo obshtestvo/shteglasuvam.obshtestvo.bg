@@ -241,7 +241,7 @@
 					</ul>
 					
 					
-<div id="fb-root"></div>
+<!-- <div id="fb-root"></div> -->
 <script>
 // (function(d, s, id) {
 //   var js, fjs = d.getElementsByTagName(s)[0];
@@ -341,10 +341,9 @@ function getEmptyFaces(){
 function postDialog(){
 	console.log('Post dialog popup.');
 	FB.ui({
-	  	method: 'share',
+	  	method: 'feed',
 	  	app_id: '501861616625542',
-	  	display: 'iframe',
-		href: 'http://shteglasuvam.obshtestvo.bg',
+		link: 'http://shteglasuvam.obshtestvo.bg',
 		picture: 'http://shteglasuvam.obshtestvo.bg/fb_logo.jpg',
 		name: "ЩE ГЛАСУВАМ",
 		caption: "Аз ще гласувам! Твоят глас не е важен само за изборите, а е важен и преди тях за да покаже на хората, че и други гласуват. Включи се в кампанията на http://shteglasuvam.obshtestvo.bg",		
