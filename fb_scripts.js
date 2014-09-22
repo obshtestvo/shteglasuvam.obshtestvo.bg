@@ -1,8 +1,13 @@
 $(document).ready(function(){
-  $("#vote").hide();
+    $("#vote").hide();
     $("#login_vote").hide();
     $("#whowillvote").hide();
     $("#badge").hide();
+
+    $("#vote_footer").hide();
+    $("#login_vote_footer").hide();
+    $("#whowillvote_footer").hide();
+    $("#badge_footer").hide();
 
   $.ajax({
   url: location.protocol + '//' + location.host + '/' + "counter.php?m=check"
@@ -27,21 +32,33 @@ window.fbAsyncInit = function() {
         var voted = docCookies.getItem("voted");
         if (voted) {
           $("#badge").show();  
+          $("#badge_footer").show();  
         }else{
           $("#login_vote").show();
+          $("#login_vote_footer").show();
         };
         
         getFaces();
     }else if(response.status === 'not_authorized'){
-      console.log("not_authorized");
-      getEmptyFaces();
-      $("#vote").show();
-        $("#whowillvote").show();
-    }else{
-      console.log("NOT Connected");
+      // console.log("not_authorized");
       getEmptyFaces();
       $("#vote").show();
       $("#whowillvote").show();
+
+      $("#vote_footer").show();
+      $("#whowillvote_footer").show();
+
+    }else{
+      console.log("NOT Connected");
+      getEmptyFaces();
+      
+      $("#vote").show();
+      $("#whowillvote").show();
+
+      $("#vote_footer").show();
+      $("#whowillvote_footer").show();
+
+      
     }
   });
 };    //FB Async Init    
@@ -127,15 +144,18 @@ function getFaces(){
     // console.log("Count" + count);
     // console.log(response.data[0].name);
     $("#faces").text("");
+    $("#faces_footer").text("");
     for (var i = 0; i < (count >= 9?9:count); i++) {
-      $("#faces").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 2px;\">");
+      $("#faces").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 5px;\">");
+      $("#faces_footer").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 5px;\">");
     };
   });
 }
 
 function getEmptyFaces(){
   $("#faces").text("");
-  // $("#faces").prepend("<img src=\"images/faces.jpg\" style=\"width: 220px;\">");   
+  $("#faces_footer").text("");
+  // $("#faces").prepend("<img src=\"images/faces.jpg \" style=\"width: 220px;\">");   
   // for (var i = 0; i < 9; i++) {
   //   $("#faces").prepend("<img src=\"images/Man_Silhouette.png\" style=\"margin: 2px; width: 50px; height: 50px;\">");   
   // };
@@ -157,7 +177,7 @@ function postDialog(){
     $.ajax({
       url: location.protocol + '//' + location.host + '/' + "counter.php?m=increment"
     }).done(function(data){
-      increment(data);
+
       docCookies.setItem("voted", "true", Infinity);
       document.location.reload(true); 
     });
@@ -180,6 +200,7 @@ function checkLogin(){
 
             if (response.status === 'connected') {
             console.log('Welcome!  Fetching your information.... ');
+            increment(data);
             postDialog();
         } else {
             console.log('User cancelled login or did not fully authorize.');
@@ -242,6 +263,19 @@ $("#login_vote").on("click",function(){
 });
 
 $("#whowillvote").on("click",function(){
+    who();
+});
+
+
+$("#vote_footer").on("click",function(){
+    checkLogin();
+});
+      
+$("#login_vote_footer").on("click",function(){
+    postDialog();
+});
+
+$("#whowillvote_footer").on("click",function(){
     who();
 });
 
