@@ -179,7 +179,7 @@ function postDialog(){
     }).done(function(data){
 
       docCookies.setItem("voted", "true", Infinity);
-      document.location.reload(true); 
+      // document.location.reload(true); 
     });
   });
 }
