@@ -275,7 +275,7 @@ $(document).ready(function(){
 	url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=check"
 	}).done(function(data){
 		increment(data);
-		console.log(data);
+		// console.log(data);
 	});
 });
 //FB Async Init
@@ -318,7 +318,7 @@ function increment(i){
 }
 
 function getFaces(){
-	console.log("Getting Faces");
+	// console.log("Getting Faces");
 	FB.api('/me/friends', {fields: 'name,photos'}, function(response) {
 
 		console.log("Got Faces");
@@ -364,16 +364,16 @@ function checkLogin(){
   	FB.getLoginStatus(function(response) {
 	    if (response.status === 'connected') {
                  
-			console.log("Connected");
+			// console.log("Connected");
 			getFaces();
 
 		}else if(response.status === 'not_authorized'){
 	        
-	        console.log("Not Autorized");
+	        // console.log("Not Autorized");
 	        getEmptyFaces();
 	        FB.login(function(response){
 
-	        	if (response.authResponse) {
+	        	if (response.status === 'connected') {
 				    console.log('Welcome!  Fetching your information.... ');
 				    postDialog();
 				} else {
@@ -384,7 +384,7 @@ function checkLogin(){
 			        
 		} else {
 
-			console.log("NOT CONNECTED");
+			// console.log("NOT CONNECTED");
 			$("#faces").text("");
 			getEmptyFaces();
 			FB.login(function(){
