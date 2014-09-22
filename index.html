@@ -174,6 +174,7 @@ $(document).ready(function(){
 <tr>
 <td align="center" colspan="2">
 
+<div id="badge" style="width: 150px; height: 100px; border: 1px solid gray;"></div>
 <a href="#" role="button" id="vote" class="voting">
 	Ще гласувам
 </a>
@@ -261,13 +262,15 @@ $(document).ready(function(){
 					
 					
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/bg_BG/sdk.js#xfbml=1&appId=501861616625542&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<script>
+// (function(d, s, id) {
+//   var js, fjs = d.getElementsByTagName(s)[0];
+//   if (d.getElementById(id)) return;
+//   js = d.createElement(s); js.id = id;
+//   js.src = "//connect.facebook.net/bg_BG/sdk.js#xfbml=1&appId=501861616625542&version=v2.0";
+//   fjs.parentNode.insertBefore(js, fjs);
+// }(document, 'script', 'facebook-jssdk'));
+</script>
 
 <div class="fb-like" data-href="https://www.facebook.com/pages/%D0%A9%D0%B5-%D0%B3%D0%BB%D0%B0%D1%81%D1%83%D0%B2%D0%B0%D0%BC/826516444039220" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 
@@ -283,6 +286,12 @@ $(document).ready(function(){
 
 <script type="text/javascript">
  
+$(document).ready(function(){
+			$("#vote").hide();
+		  	$("#login_vote").hide();
+		  	$("#whowillvote").hide();
+		  	$("#badge").hide();
+});
 //FB Async Init
 window.fbAsyncInit = function() {
 	FB.init({
@@ -296,13 +305,19 @@ window.fbAsyncInit = function() {
 	FB.getLoginStatus(function(response) {
 		if(response.status === 'connected') {
 		  	console.log("Connected");
+		  	$("#badge").show();
+
 		    getFaces();
 		}else if(response.status === 'not_authorized'){
 			console.log("not_authorized");
 			getEmptyFaces();
+			$("#login_vote").show();
+		  	$("#whowillvote").show();
 		}else{
 			console.log("NOT Connected");
 			getEmptyFaces();
+			$("#vote").show();
+			$("#whowillvote").show();
 		}
 	});
 };    //FB Async Init    
