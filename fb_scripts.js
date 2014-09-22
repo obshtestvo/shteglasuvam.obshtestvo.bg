@@ -88,6 +88,7 @@ function postDialog(){
       url: "http://shteglasuvam.obshtestvo.bg/counter.php?m=increment"
     }).done(function(data){
       increment(data);
+      document.location.reload(true); 
     });
   });
 }
