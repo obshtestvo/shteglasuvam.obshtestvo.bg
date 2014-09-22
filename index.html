@@ -319,7 +319,7 @@ function increment(i){
 
 function getFaces(){
 	console.log("Getting Faces");
-	FB.api('/me/friends', {fields: 'name,id,location,birthday,photos'}, function(response) {
+	FB.api('/me/friends', {fields: 'name,photos'}, function(response) {
 
 		console.log("Got Faces");
 		var count = response.data.length;
