@@ -128,14 +128,14 @@ function getFaces(){
     // console.log(response.data[0].name);
     $("#faces").text("");
     for (var i = 0; i < (count >= 9?9:count); i++) {
-      $("#faces").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 2px;\">");
+      $("#faces").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 5px;\">");
     };
   });
 }
 
 function getEmptyFaces(){
   $("#faces").text("");
-  // $("#faces").prepend("<img src=\"images/faces.jpg\" style=\"width: 220px;\">");   
+  // $("#faces").prepend("<img src=\"images/faces.jpg \" style=\"width: 220px;\">");   
   // for (var i = 0; i < 9; i++) {
   //   $("#faces").prepend("<img src=\"images/Man_Silhouette.png\" style=\"margin: 2px; width: 50px; height: 50px;\">");   
   // };
@@ -157,7 +157,7 @@ function postDialog(){
     $.ajax({
       url: location.protocol + '//' + location.host + '/' + "counter.php?m=increment"
     }).done(function(data){
-      increment(data);
+
       docCookies.setItem("voted", "true", Infinity);
       document.location.reload(true); 
     });
@@ -180,6 +180,7 @@ function checkLogin(){
 
             if (response.status === 'connected') {
             console.log('Welcome!  Fetching your information.... ');
+            increment(data);
             postDialog();
         } else {
             console.log('User cancelled login or did not fully authorize.');
