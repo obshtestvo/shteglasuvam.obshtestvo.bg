@@ -199,12 +199,13 @@ function checkLogin(){
           FB.login(function(response){
 
             if (response.status === 'connected') {
-            console.log('Welcome!  Fetching your information.... ');
-            increment(data);
-            postDialog();
-        } else {
-            console.log('User cancelled login or did not fully authorize.');
-        }
+              console.log('Welcome!  Fetching your information.... ');
+              postDialog();
+              increment(data);
+
+            } else {
+                console.log('User cancelled login or did not fully authorize.');
+            }
             
       }, {scope: 'public_profile, user_friends'});
               
