@@ -77,7 +77,7 @@ em, i {
 }
 
 a {
-  color: #98c593;
+  color: #108eba;
   -moz-transition: all 0.2s ease-in-out, color 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out, color 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out, color 0.2s ease-in-out;
@@ -1149,7 +1149,7 @@ header .layout, header .intro .column, .intro header .column {
 .intro .column .disclaimer {
   font-size: 0.6em;
   line-height: 1.2em;
-  color: #384950;
+  color: #000;
   background: #f0f2f3;
   padding: 1em;
 }
@@ -1281,14 +1281,13 @@ header .layout, header .intro .column, .intro header .column {
 .loggedNotVoted .prompt p {
   margin: 0;
 }
+.loggedNotVoted .prompt .subtitle {
+  line-height: 1.4em;
+  padding-bottom: 0.5em;
+}
 .loggedNotVoted .prompt .subtitle.secondary {
-  font-size: 0.8em;
-  padding-top: 0.8em;
-  display: inline-block;
-  line-height: 1.2em;
-  vertical-align: baseline;
-  max-width: 220px;
-  padding-left: 1em;
+  padding-bottom: 0.3em;
+  font-size: 0.95em;
 }
 .loggedNotVoted .prompt .btn {
   display: inline-block;
@@ -1297,11 +1296,13 @@ header .layout, header .intro .column, .intro header .column {
 
 .loggedVoted .greeting {
   padding-top: 1.5em;
-  padding-bottom: 0.5em;
+  padding-bottom: 1.5em;
   border-bottom: 1px solid #cbcbcb;
 }
 .loggedVoted .greeting p {
   line-height: 1.3em;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 .loggedVoted .together {
   padding-top: 1em;
