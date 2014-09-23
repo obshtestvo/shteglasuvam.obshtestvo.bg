@@ -12,8 +12,8 @@ $(document).ready(function(){
   app.$intro = $('.intro');
   app.$footer = $('footer');
   var $introClone = app.$intro.clone()
-  $introClone.find('.more').remove()
-  app.$footer.prepend($introClone)
+  $introClone.addClass('duplicate').find('.more, .disclaimer').remove()
+  $introClone.insertBefore(app.$footer)
 
   app.firstVisit.$containers = $('.firstVisit')
   app.loggedIn.voted.$containers = $('.loggedVoted')
@@ -71,6 +71,7 @@ window.fbAsyncInit = function() {
       var voted = docCookies.getItem("voted");
       if (voted) {
         app.loggedIn.voted.$containers.show();
+        $('.duplicate').remove()
       } else {
         app.loggedIn.notVoted.$containers.show();
       }
