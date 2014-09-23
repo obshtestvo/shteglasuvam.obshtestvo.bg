@@ -1314,6 +1314,8 @@ header .layout, header .intro .column, .intro header .column {
 
 .faces.list img {
   margin: 0 2px 2px 0;
+  width: 60px;
+  height: 60px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
