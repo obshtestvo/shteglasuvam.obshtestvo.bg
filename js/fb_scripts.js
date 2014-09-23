@@ -105,9 +105,8 @@ function postDialog(){
     link: baseUrl,
     picture: baseUrl + "fb_logo.jpg",
     name: "ЩE ГЛАСУВАМ",
-    caption: "Аз ще гласувам! Твоят глас не е важен само за изборите, а е важен и преди тях за да покаже на хората, че и други гласуват. Включи се в кампанията на http://shteglasuvam.obshtestvo.bg",    
     description: "Ще гласувам е независима кампания, целяща да увеличи избирателната активност и да покаже, че твоя глас има силата да стори промяна",
-    actions: [{ name: 'action_links text!', link: 'http://shteglasuvam.obshtestvo.bg' }]
+    actions: [{ name: 'Ще гласувам!', link: 'http://www.shteglasuvam.com' }]
   }, function(response) {
     $.ajax({
       url: baseUrl + "counter.php?m=increment"
