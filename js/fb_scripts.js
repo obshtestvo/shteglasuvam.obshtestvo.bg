@@ -67,8 +67,10 @@ window.fbAsyncInit = function() {
   }); 
 
   FB.getLoginStatus(function(response) {
+    console.log('getLoginStatus', response)
     if(response.status === 'connected') {
       var voted = docCookies.getItem("voted");
+      console.log(voted)
       if (voted) {
         app.loggedIn.voted.$containers.show();
         $('.duplicate').remove()
@@ -113,7 +115,7 @@ function postDialog(){
     $.ajax({
       url: baseUrl + "counter.php?m=increment"
     }).done(function(data) {
-      console.log(data)
+      console.log('postDialog','set cookie')
       docCookies.setItem("voted", "true", Infinity);
       document.location.reload(true);
     });
@@ -125,17 +127,15 @@ function checkLogin(){
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
       updateFaces();
-    } else if(response.status === 'not_authorized'){
+    } else {
+      console.log('checkLogin','not_authorized')
       FB.login(function(response) {
+        console.log('checkLogin',response)
         if (response.status === 'connected') {
           postDialog();
         } else {
-            console.log('User cancelled login or did not fully authorize.');
+           //User cancelled login or did not fully authorize.
         }
-      }, {scope: 'public_profile, user_friends'});
-    } else {
-      FB.login(function(){
-        document.location.reload(true); 
       }, {scope: 'public_profile, user_friends'});
     }
   });
