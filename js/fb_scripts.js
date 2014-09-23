@@ -106,7 +106,7 @@ function postDialog(){
     picture: baseUrl + "fb_logo.jpg",
     name: "ЩE ГЛАСУВАМ",
     description: "Ще гласувам е независима кампания, целяща да увеличи избирателната активност и да покаже, че твоя глас има силата да стори промяна",
-    actions: [{ name: 'Ще гласувам!', link: 'http://www.shteglasuvam.com' }]
+    actions: [{ name: 'И аз ще гласувам!', link: 'http://www.shteglasuvam.com' }]
   }, function(response) {
     $.ajax({
       url: baseUrl + "counter.php?m=increment"
