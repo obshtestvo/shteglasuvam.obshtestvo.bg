@@ -76,8 +76,7 @@ em, i {
 }
 
 a {
-  color: #98c593;
-
+  color: #108eba;
   -moz-transition: all 0.2s ease-in-out, color 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out, color 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out, color 0.2s ease-in-out;
@@ -1392,14 +1391,13 @@ body.touch .poptrox-popup .closer {
     p {
       margin:0
     }
+    .subtitle {
+      line-height: 1.4em;
+      padding-bottom: 0.5em;
+    }
     .subtitle.secondary {
-      font-size: 0.8em;
-      padding-top: 0.8em;
-      display: inline-block;
-      line-height: 1.2em;
-      vertical-align: baseline;
-      max-width: 220px;
-      padding-left: 1em;
+      padding-bottom: 0.3em;
+      font-size: 0.95em;
     }
     .btn {
       display: inline-block;
@@ -1417,10 +1415,12 @@ body.touch .poptrox-popup .closer {
 .loggedVoted {
   .greeting {
     padding-top: 1.5em;
-    padding-bottom: 0.5em;
+    padding-bottom: 1.5em;
     border-bottom: 1px solid #cbcbcb;
     p {
       line-height: 1.3em;
+      padding-bottom: 0;
+      margin-bottom: 0;
     }
   }
   .together {
