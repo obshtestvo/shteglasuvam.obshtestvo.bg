@@ -67,10 +67,8 @@ window.fbAsyncInit = function() {
   }); 
 
   FB.getLoginStatus(function(response) {
-    console.log('getLoginStatus', response)
     if(response.status === 'connected') {
       var voted = docCookies.getItem("voted");
-      console.log(voted)
       if (voted) {
         app.loggedIn.voted.$containers.show();
         $('.duplicate').remove()
@@ -88,7 +86,6 @@ window.fbAsyncInit = function() {
 
 
 function updateFaces(){
-  // console.log("Getting Faces");
   FB.api('/me/friends', {fields: 'name,photos'}, function(response) {
     var count = response.data.length;
     for (var i = 0; i < count; i++) {
@@ -115,7 +112,6 @@ function postDialog(){
     $.ajax({
       url: baseUrl + "counter.php?m=increment"
     }).done(function(data) {
-      console.log('postDialog','set cookie')
       docCookies.setItem("voted", "true", Infinity);
       document.location.reload(true);
     });
@@ -128,9 +124,7 @@ function checkLogin(){
     if (response.status === 'connected') {
       updateFaces();
     } else {
-      console.log('checkLogin','not_authorized')
       FB.login(function(response) {
-        console.log('checkLogin',response)
         if (response.status === 'connected') {
           postDialog();
         } else {
