@@ -736,9 +736,8 @@ body {
 /*********************************************************************************/
 /* Intro                                                                         */
 /*********************************************************************************/
-#intro {
+.intro {
   background: #fff;
-  color: black !important;
   padding-top: 0 !important;
 }
 
@@ -1090,20 +1089,20 @@ body.touch .poptrox-popup .closer {
   opacity: 1.0 !important;
 }
 
-.layout, #intro .column {
+.layout, .intro .column {
   max-width: 640px;
   margin: 0 auto;
 }
-header .layout, header #intro .column, #intro header .column {
+header .layout, header .intro .column, .intro header .column {
   height: 3em;
   position: relative;
 }
 
-#intro .column {
+.intro .column {
   color: #132228;
   font-weight: 100;
 }
-#intro .column .say .btn, #intro .column .who .btn b {
+.intro .column .say .btn, .intro .column .who .btn b, .intro .column .loggedNotVoted .prompt .btn, .loggedNotVoted .prompt .intro .column .btn {
   cursor: pointer;
   text-decoration: none;
   font-size: 1.25em;
@@ -1127,40 +1126,40 @@ header .layout, header #intro .column, #intro header .column {
   text-align: center;
   padding: 0.5em 0.7em 0.5em 0.7em;
 }
-#intro .column .say .btn:hover, #intro .column .say .btn:focus, #intro .column .who .btn:hover b, #intro .column .who .btn:focus b {
+.intro .column .say .btn:hover, .intro .column .say .btn:focus, .intro .column .who .btn:hover b, .intro .column .who .btn:focus b, .intro .column .loggedNotVoted .prompt .btn:hover, .loggedNotVoted .prompt .intro .column .btn:hover, .intro .column .loggedNotVoted .prompt .btn:focus, .loggedNotVoted .prompt .intro .column .btn:focus {
   background: #469704;
 }
-#intro .column .say .btn:active, #intro .column .who .btn:active b {
+.intro .column .say .btn:active, .intro .column .who .btn:active b, .intro .column .loggedNotVoted .prompt .btn:active, .loggedNotVoted .prompt .intro .column .btn:active {
   background: #CAE0B9;
   color: #469704;
 }
-#intro .column strong {
+.intro .column strong {
   color: #384950;
 }
-#intro .column .desc {
+.intro .column .desc {
   float: left;
   font-size: 0.7em;
   line-height: 1.42em;
   padding-top: 1em;
 }
-#intro .column .desc strong {
+.intro .column .desc strong {
   display: block;
   padding-bottom: 0.5em;
 }
-#intro .column .disclaimer {
+.intro .column .disclaimer {
   font-size: 0.6em;
   line-height: 1.2em;
   color: #000;
   background: #f0f2f3;
   padding: 1em;
 }
-#intro .column .disclaimer p {
+.intro .column .disclaimer p {
   margin: 0.6em 0 0 0;
 }
-#intro .column .disclaimer p:first-child {
+.intro .column .disclaimer p:first-child {
   margin: 0;
 }
-#intro .column h2 {
+.intro .column h2 {
   font-size: 1.8em;
   font-weight: 100;
   position: relative;
@@ -1168,32 +1167,32 @@ header .layout, header #intro .column, #intro header .column {
   color: #384950;
   padding-bottom: 0.2em;
 }
-#intro .column .say {
+.intro .column .say {
   padding-bottom: 1.8em;
   padding-top: 1.5em;
 }
-#intro .column .say .prompt, #intro .column .say .desc {
+.intro .column .say .prompt, .intro .column .say .desc {
   width: 50%;
   float: left;
 }
-#intro .column .say h2 {
+.intro .column .say h2 {
   top: -0.1em;
 }
-#intro .column .sep {
+.intro .column .sep {
   font-size: 0.9em;
   line-height: 1em;
   text-align: center;
   color: #4e5b60;
   border-top: 1px solid #cbcbcb;
 }
-#intro .column .sep span {
+.intro .column .sep span {
   position: relative;
   top: -1.1em;
   display: inline-block;
   padding: 0.5em;
   background: #fff;
 }
-#intro .column .who #faces {
+.intro .column .who .faces {
   z-index: 1;
   height: 3em;
   width: 310px;
@@ -1205,44 +1204,44 @@ header .layout, header #intro .column, #intro header .column {
   left: 128px;
   background: url("../images/who.png") left top;
 }
-#intro .column .who .btn {
+.intro .column .who .btn {
   cursor: pointer;
   display: block;
   position: relative;
 }
-#intro .column .who .btn b {
+.intro .column .who .btn b {
   background: #2296c1;
 }
-#intro .column .who .btn:hover #faces {
+.intro .column .who .btn:hover .faces {
   left: 252px;
 }
-#intro .column .who .btn:hover b, #intro .column .who .btn:focus b {
+.intro .column .who .btn:hover b, .intro .column .who .btn:focus b {
   background: #197A9E;
 }
-#intro .column .who .btn:active b {
+.intro .column .who .btn:active b {
   background: #97C1D1;
   color: #197A9E;
 }
-#intro .column .uncertain {
+.intro .column .uncertain {
   padding-bottom: 1em;
 }
-#intro .column .uncertain .subtitle {
+.intro .column .uncertain .subtitle {
   margin: 0;
 }
-#intro .more {
+.intro .more {
   text-align: center;
 }
-#intro .continue {
+.intro .continue {
   color: #108eba;
   text-decoration: underline;
   text-transform: uppercase;
   font-size: 0.8em;
 }
-#intro .continue span {
+.intro .continue span {
   display: block;
   padding-bottom: 0.5em;
 }
-#intro .continue i {
+.intro .continue i {
   width: 3.5em;
   height: 3.5em;
   display: inline-block;
@@ -1253,13 +1252,71 @@ header .layout, header #intro .column, #intro header .column {
   border-radius: 50%;
   border: 1px solid #ccc;
 }
-#intro .continue:hover {
+.intro .continue:hover {
   text-decoration: none;
 }
-#intro .continue:hover i {
+.intro .continue:hover i {
   border-color: #108eba;
   background-color: #108eba;
   background-image: url("../images/arrow-white.svg");
+}
+
+.loggedNotVoted .friends {
+  padding-top: 1.5em;
+  padding-bottom: 0.8em;
+  border-bottom: 1px solid #cbcbcb;
+}
+.loggedNotVoted .friends .subtitle {
+  font-size: 0.9em;
+  padding-top: 0.4em;
+  line-height: 1.2em;
+}
+.loggedNotVoted .prompt {
+  padding-top: 1.5em;
+  padding-bottom: 2em;
+}
+.loggedNotVoted .prompt p {
+  margin: 0;
+}
+.loggedNotVoted .prompt .subtitle.secondary {
+  font-size: 0.8em;
+  padding-top: 0.8em;
+  display: inline-block;
+  line-height: 1.2em;
+  vertical-align: baseline;
+  max-width: 220px;
+  padding-left: 1em;
+}
+.loggedNotVoted .prompt .btn {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.loggedVoted .greeting {
+  padding-top: 1.5em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #cbcbcb;
+}
+.loggedVoted .greeting p {
+  line-height: 1.3em;
+}
+.loggedVoted .together {
+  padding-top: 1em;
+  padding-bottom: 2em;
+}
+.loggedVoted .together h2 {
+  padding-bottom: 0.1em;
+}
+
+.faces.list img {
+  margin: 0 2px 2px 0;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  float: left;
+}
+.faces.list img.placeholder {
+  margin: 0;
 }
 
 /*# sourceMappingURL=style.css.map */

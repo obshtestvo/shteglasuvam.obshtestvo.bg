@@ -12,6 +12,7 @@
     <meta name="keywords" content=""/>
     <!--[if lte IE 8]>
     <script src="css/ie/html5shiv.js"></script><![endif]-->
+    <script src="js/docCookies.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.poptrox.min.js"></script>
     <script src="js/jquery.scrolly.min.js"></script>
@@ -50,65 +51,97 @@
 
         <ul id="social_actions">
             <li>
-                <a onclick='window.open("http://www.facebook.com/sharer.php?u=http://shteglasuvam.com", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=50, left=50, width=700, height=380");'
+                <a title="Сподели кампанията във Facebook" onclick='window.open("http://www.facebook.com/sharer.php?u=http://shteglasuvam.com", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=50, left=50, width=700, height=380");'
                    class="icon fa-facebook"><span class="label">Facebook</span></a></li>
             <li>
-                <a onclick='window.open("http://twitter.com/share?url=http://shteglasuvam.com&text=Аз ще гласувам!", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=50, left=50, width=700, height=380");'
+                <a title="Сподели кампанията в twitter" onclick='window.open("http://twitter.com/share?url=http://shteglasuvam.com&text=Аз ще гласувам!", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=50, left=50, width=700, height=380");'
                    class="icon fa-twitter"><span class="label">Twitter</span></a></li>
             <li>
-                <a onclick='window.open("https://plus.google.com/share?url=http://shteglasuvam.com", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=50, left=50, width=700, height=380");'
+                <a title="Сподели кампанията в Google+" onclick='window.open("https://plus.google.com/share?url=http://shteglasuvam.com", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=50, left=50, width=700, height=380");'
                    class="icon fa-google-plus"><span class="label">Google+</span></a></li>
         </ul>
     </div>
 </header>
 
 <!-- Intro -->
-<section id="intro">
+<section class="intro">
         <div class="column">
             <div class="disclaimer">
-                <p>Това е  независима кампания изградена чрез доброволни усилия от <a href="https://obshtestvo.bg/">
+                <p>Това е независима кампания дело на екип доброволци от <a href="https://obshtestvo.bg/">Общество.бг
                     <img src="images/obshtestvo_logo.png" alt="Obshtestvo logo" width="96" height="15">
                 </a></p>
                 <p>Целта е да се повиши избирателната активност и да се покаже, че всеки глас има силата да направи промяна.</p>
             </div>
-            <div class="say clearfix">
-                <div class="prompt">
-                    <h2>
-                        Кажи на всички
-                    </h2>
-                    <a class="btn green" id="vote">
-                        <b>Ще гласувам!</b>
-                    </a>
-                </div>
-                <p class="desc">
-                    <strong>Твоят глас е важен не само за изборите.</strong>
-                    Тук можеш да заявиш своята гражданска позиция като споделиш,
-                    че ще гласуваш и да призовеш
-                    твоите приятели да последват примера ти.</p>
-            </div>
-            <div class="sep"><span>или</span></div>
-            <div class="uncertain">
-                <div class="prompt">
-                    <h2>
-                        Mислиш, че не е важно?
-                    </h2>
-                    <p class="subtitle">Разбери</p>
-                    <div class="who">
-                        <a class="btn green" id="whowillvote">
-                            <b>Кой ще гласува</b>
-                            <div id="faces"></div>
+
+            <div class="firstVisit">
+                <div class="say clearfix">
+                    <div class="prompt">
+                        <h2>
+                            Кажи на всички
+                        </h2>
+                        <a class="btn green vote" >
+                            <b>Ще гласувам!</b>
                         </a>
                     </div>
-                    <p class="subtitle">от facebook приятелите ти и се присъедини към тях</p>
+                    <p class="desc">
+                        <strong>Твоят глас е важен не само за изборите.</strong>
+                        Тук можеш да заявиш своята гражданска позиция като споделиш,
+                        че ще гласуваш и да призовеш
+                        твоите приятели да последват примера ти.</p>
                 </div>
-
+                <div class="sep"><span>или</span></div>
+                <div class="uncertain">
+                    <div class="prompt">
+                        <h2>
+                            Mислиш, че не е важно?
+                        </h2>
+                        <p class="subtitle">Разбери</p>
+                        <div class="who">
+                            <a class="btn green whowillvote">
+                                <b>Кой ще гласува</b>
+                                <div class="faces"></div>
+                            </a>
+                        </div>
+                        <p class="subtitle">от facebook приятелите ти и се присъедини към тях</p>
+                    </div>
+                </div>
             </div>
 
-            <div id="badge" style="width: 150px; height: 100px; border: 1px solid gray;"></div>
+            <div class="loggedNotVoted">
+                <div class="friends">
+                    <h2>На 5ти Октомври</h2>
+                    <div class="faces list clearfix"></div>
+                    <p class="subtitle">
+                        от приятелите ти ще гласуват. Така ще направят още <strong class="count">20112</strong> човека
+                    </p>
+                </div>
+                <div class="prompt">
+                    <h2>Не виждаш някои от тях?</h2>
+                    <p class="subtitle">
+                        Призови останалите, кажи на всички
+                    </p>
+                    <a class="btn green login_vote">
+                        <b>Ще гласувам!</b>
+                    </a>
+                    <p class="subtitle secondary">Твоите приятели може да последват примера ти</p>
+                </div>
+            </div>
 
-            <a href="#" role="button" id="login_vote">
-                <img src="images/vote.jpg" title="Ще гласувам" style="width: 180px;">
-            </a>
+            <div class="loggedVoted">
+                <div class="greeting">
+                    <h2>Чудесно!</h2>
+                    <p class="wish">Пожелаваме ти, след 5ти октомври поне до 2018 да си доволен
+                        от резултата.</p>
+                </div>
+                <div class="together">
+                    <h2>Заедно с теб ще гласуват</h2>
+                    <div class="faces list clearfix"></div>
+                    <p class="subtitle">
+                        от приятлите ти. Така ще направят още <strong class="count">20112</strong> човека.
+                    </p>
+                </div>
+            </div>
+
             <div class="more">
                 <a href="#one" class="continue down"><span>Научи защо е важно </span><i></i></a>
             </div>
@@ -238,21 +271,6 @@
     </div>
 </section>
 
-
-<section>
-    <div id="faces_footer"></div>
-    <div id="badge_footer" style="width: 150px; height: 100px; border: 1px solid gray;"></div>
-    <a href="#" role="button" id="vote_footer">
-        <img src="images/vote.jpg" title="Ще гласувам" style="width: 180px;">
-    </a>
-    <a href="#" role="button" id="login_vote_footer">
-        <img src="images/vote.jpg" title="Ще гласувам" style="width: 180px;">
-    </a>
-    <a href="#" role="button" id="whowillvote_footer">
-        <img src="images/whowillvote.jpg" title="Кой Ще гласува?" style="width: 180px;">
-    </a>
-</section>
-
 <!-- Footer -->
 <footer id="footer">
     <!-- Icons -->
@@ -308,34 +326,6 @@
 </footer>
 
 
-<script type="text/javascript">
-    $(function () {
-        $('.popup-modal').magnificPopup({
-            type: 'inline',
-            preloader: false,
-            focus: '#username',
-            modal: true
-        });
-        $(document).on('click', '.popup-modal-dismiss', function (e) {
-            e.preventDefault();
-            $.magnificPopup.close();
-        });
-    });
-</script>
-<script type="text/javascript">
-    $(function () {
-        $('.popup-modal').magnificPopup({
-            type: 'inline',
-            preloader: false,
-            focus: '#username',
-            modal: true
-        });
-        $(document).on('click', '.popup-modal-dismiss', function (e) {
-            e.preventDefault();
-            $.magnificPopup.close();
-        });
-    });
-</script>
 <script type="text/javascript" src="js/fb_scripts.js"></script>
 <script>
     (function (i, s, o, g, r, a, m) {

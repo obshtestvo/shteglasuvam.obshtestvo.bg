@@ -800,9 +800,8 @@ body {
 /* Intro                                                                         */
 /*********************************************************************************/
 
-#intro {
+.intro {
   background: #fff;
-  color:black !important;
   padding-top: 0 !important;
 }
 
@@ -1195,7 +1194,7 @@ body.touch .poptrox-popup .closer {
     position: relative;
   }
 }
-#intro {
+.intro {
   .column {
     @extend .layout;
     color: #132228;
@@ -1299,7 +1298,7 @@ body.touch .poptrox-popup .closer {
       }
     }
     .who {
-      #faces {
+      .faces {
         z-index: 1;
         height: 3em;
         width:310px;
@@ -1318,7 +1317,7 @@ body.touch .poptrox-popup .closer {
           background: #2296c1;
         }
         &:hover {
-          #faces {
+          .faces {
             left: 252px;
           }
         }
@@ -1369,6 +1368,74 @@ body.touch .poptrox-popup .closer {
         border-color: #108eba;
         background-color: #108eba;
         background-image: url('../images/arrow-white.svg');
+      }
+    }
+  }
+}
+.loggedNotVoted {
+  .friends {
+    padding-top: 1.5em;
+    padding-bottom: 0.8em;
+    border-bottom: 1px solid #cbcbcb;
+    .subtitle {
+      font-size: 0.9em;
+      padding-top: 0.4em;
+      line-height: 1.2em;
+    }
+  }
+  .prompt {
+    padding-top: 1.5em;
+    padding-bottom: 2em;
+    p {
+      margin:0
+    }
+    .subtitle.secondary {
+      font-size: 0.8em;
+      padding-top: 0.8em;
+      display: inline-block;
+      line-height: 1.2em;
+      vertical-align: baseline;
+      max-width: 220px;
+      padding-left: 1em;
+    }
+    .btn {
+      display: inline-block;
+      vertical-align: baseline;
+      @extend %btn;
+      &:hover, &:focus {
+        @extend %btn-interest;
+      }
+      &:active {
+        @extend %btn-press;
+      }
+    }
+  }
+}
+.loggedVoted {
+  .greeting {
+    padding-top: 1.5em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #cbcbcb;
+    p {
+      line-height: 1.3em;
+    }
+  }
+  .together {
+    padding-top: 1em;
+    padding-bottom: 2em;
+    h2 {
+      padding-bottom: 0.1em;
+    }
+  }
+}
+.faces {
+  &.list {
+    img {
+      margin: 0 2px 2px 0;
+      @include border-radius(2px);
+      float:left;
+      &.placeholder {
+        margin:0;
       }
     }
   }
