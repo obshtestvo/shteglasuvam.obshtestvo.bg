@@ -51,7 +51,7 @@ body,input,textarea,select {
 }
 
 h1,h2,h3,h4,h5,h6 {
-  font-weight: 500;
+  font-weight: 100;
   color: inherit;
 }
 
@@ -1197,8 +1197,8 @@ body.touch .poptrox-popup .closer {
 .intro {
   .column {
     @extend .layout;
-    color: #132228;
-    font-weight: 100;
+    color: #384950;
+    font-weight: 300;
     %btn {
       cursor:pointer;
       text-decoration:none;
@@ -1261,7 +1261,6 @@ body.touch .poptrox-popup .closer {
     }
     h2 {
       font-size: 1.8em;
-      font-weight: 100;
       position: relative;
       letter-spacing: -1px;
       color: #384950;
