@@ -258,7 +258,7 @@
 					resizeTimeout = window.setTimeout(function() {
 
 						// Update scrolly links.
-							$('a[href^=#]').scrolly(1500, $header.outerHeight() - 1);
+							$('a[href^=#]').scrolly(800, $header.outerHeight() - 1);
 
 						// Resize fullscreen elements.
 							if (settings.fullScreen

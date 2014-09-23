@@ -12,12 +12,13 @@ $(document).ready(function(){
   $.ajax({
   url: location.protocol + '//' + location.host + '/' + "counter.php?m=check"
   }).done(function(data){
-    increment(data);
-    // console.log(data);
   });
 });
+
+
 //FB Async Init
 window.fbAsyncInit = function() {
+
   FB.init({
     appId      : '501861616625542',
     xfbml      : true,
@@ -39,7 +40,7 @@ window.fbAsyncInit = function() {
         };
         
         getFaces();
-    }else if(response.status === 'not_authorized'){
+    } else if (response.status === 'not_authorized'){
       // console.log("not_authorized");
       getEmptyFaces();
       $("#vote").show();
@@ -146,8 +147,8 @@ function getFaces(){
     $("#faces").text("");
     $("#faces_footer").text("");
     for (var i = 0; i < (count >= 9?9:count); i++) {
-      $("#faces").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 5px;\">");
-      $("#faces_footer").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\" style=\"margin: 5px;\">");
+      $("#faces").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\">");
+      $("#faces_footer").prepend("<img src=\"http://graph.facebook.com/"+response.data[i]["id"]+"/picture?type=square\">");
     };
   });
 }
@@ -201,7 +202,6 @@ function checkLogin(){
             if (response.status === 'connected') {
               console.log('Welcome!  Fetching your information.... ');
               postDialog();
-              increment(data);
 
             } else {
                 console.log('User cancelled login or did not fully authorize.');
