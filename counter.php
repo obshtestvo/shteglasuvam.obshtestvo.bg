@@ -12,10 +12,7 @@ if($_REQUEST['m'] == 'increment'){
 	fclose($fp); 
 
 	// Add 1 to the existing count 
-	$zeros = strlen($count);
-	$count = $count + 1; 
-	$numbers = strlen($count);
-	$count = str_repeat("0", $zeros - $numbers) . $count;
+	$count = $count + 1;
 
 	// Reopen the file and erase the contents 
 	$fp = fopen("cnt.dat", "w"); 
