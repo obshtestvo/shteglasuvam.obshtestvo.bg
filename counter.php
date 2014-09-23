@@ -20,6 +20,7 @@ if($_REQUEST['m'] == 'increment'){
 	fwrite($fp, $count); 
 
 	// Unlock and close the file
+	fflush($fp);
 	flock($fp, LOCK_UN);
 	fclose($fp); 
 	echo $count;
