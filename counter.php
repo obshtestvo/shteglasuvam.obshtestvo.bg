@@ -3,7 +3,7 @@
 
 if($_REQUEST['m'] == 'increment'){
 	// Open the file for reading 
-	$fp = fopen("cnt.dat", "w"); 
+	$fp = fopen("cnt.dat", "r+");
 
 	// Lock the file, to prevent a race condition
 	flock($fp, LOCK_EX);
@@ -20,6 +20,7 @@ if($_REQUEST['m'] == 'increment'){
 	fwrite($fp, $count); 
 
 	// Unlock and close the file
+	fflush($fp);
 	flock($fp, LOCK_UN);
 	fclose($fp); 
 	echo $count;
