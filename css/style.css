@@ -549,7 +549,7 @@ input[type="reset"].style2:hover,
 
 .main.style3 {
   text-align: center;
-  padding: 6em 0 6em 0;
+  padding: 1em 0 6em 0;
 }
 
 .main.style3 .content > header {
@@ -1314,8 +1314,6 @@ header .layout, header .intro .column, .intro header .column {
 
 .faces.list img {
   margin: 0 2px 2px 0;
-  width: 60px;
-  height: 60px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
