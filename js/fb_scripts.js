@@ -43,6 +43,16 @@ $(document).ready(function(){
     postDialog();
   });
 
+  var $map = $('#map');
+  var mapLoaded = false;
+  $map.waypoint(function() {
+    if (!mapLoaded) {
+      $map.attr('src', $map.data('src'))
+    }
+  }, {
+    offset: 200
+  })
+
   $.ajax({
       url: baseUrl  + "counter.php?m=check"
   }).done(function(data){
