@@ -47,6 +47,7 @@ $(document).ready(function(){
   var mapLoaded = false;
   $map.waypoint(function() {
     if (!mapLoaded) {
+      mapLoaded=true;
       $map.attr('src', $map.data('src'))
     }
   }, {
