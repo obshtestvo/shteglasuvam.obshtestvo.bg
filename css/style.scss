@@ -1443,3 +1443,37 @@ body.touch .poptrox-popup .closer {
     }
   }
 }
+
+
+@media (max-width: 768px) {
+
+  #header {
+    padding: 0 10px;
+  }
+
+  .intro .column .say .prompt, 
+  .intro .column .say .desc {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .intro .column .say .prompt, 
+  .intro .column .say .desc,
+  .intro .column h2,
+  .intro .column .uncertain .subtitle,
+  .intro .column .who .btn {
+    text-align: center;
+  }
+
+  .intro .column .who .btn:hover .faces {
+    left: 0;
+  }
+
+  .intro .column .who .faces {
+    position: relative;
+    margin: 10px auto;
+    left: 0;
+  }
+
+}

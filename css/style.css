@@ -1120,6 +1120,7 @@ header .layout, header .intro .column, .intro header .column {
   border-radius: 2px;
   background-clip: padding-box;
   -moz-transition: all 100ms ease-in-out;
+  -o-transition: all 100ms ease-in-out;
   -webkit-transition: all 100ms ease-in-out;
   transition: all 100ms ease-in-out;
   min-width: 250px;
@@ -1202,6 +1203,7 @@ header .layout, header .intro .column, .intro header .column {
   position: absolute;
   top: 0;
   -moz-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
   -webkit-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
   left: 128px;
@@ -1323,4 +1325,33 @@ header .layout, header .intro .column, .intro header .column {
   margin: 0;
 }
 
-/*# sourceMappingURL=style.css.map */
+@media (max-width: 768px) {
+  #header {
+    padding: 0 10px;
+  }
+
+  .intro .column .say .prompt,
+  .intro .column .say .desc {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .intro .column .say .prompt,
+  .intro .column .say .desc,
+  .intro .column h2,
+  .intro .column .uncertain .subtitle,
+  .intro .column .who .btn {
+    text-align: center;
+  }
+
+  .intro .column .who .btn:hover .faces {
+    left: 0;
+  }
+
+  .intro .column .who .faces {
+    position: relative;
+    margin: 10px auto;
+    left: 0;
+  }
+}
