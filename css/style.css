@@ -1120,7 +1120,6 @@ header .layout, header .intro .column, .intro header .column {
   border-radius: 2px;
   background-clip: padding-box;
   -moz-transition: all 100ms ease-in-out;
-  -o-transition: all 100ms ease-in-out;
   -webkit-transition: all 100ms ease-in-out;
   transition: all 100ms ease-in-out;
   min-width: 250px;
@@ -1203,7 +1202,6 @@ header .layout, header .intro .column, .intro header .column {
   position: absolute;
   top: 0;
   -moz-transition: all 300ms ease-in-out;
-  -o-transition: all 300ms ease-in-out;
   -webkit-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
   left: 128px;
@@ -1316,6 +1314,8 @@ header .layout, header .intro .column, .intro header .column {
 
 .faces.list img {
   margin: 0 2px 2px 0;
+  width: 60px;
+  height: 60px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
@@ -1355,3 +1355,5 @@ header .layout, header .intro .column, .intro header .column {
     left: 0;
   }
 }
+
+/*# sourceMappingURL=style.css.map */
