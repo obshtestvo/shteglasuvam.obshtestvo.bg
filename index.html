@@ -237,6 +237,32 @@
 "></p>
 </section>
 
+<script type='text/javascript'>
+if (top.location!= self.location)
+{
+top.location = self.location
+}
+</script>
+
+<script src="http://connect.facebook.net/en_US/all.js"></script>
+<script>
+FB.init({
+appId:'501861616625542',
+cookie:true,
+status:true,
+xfbml:true
+});
+
+function FacebookInviteFriends()
+{
+FB.ui({
+method: 'apprequests',
+message: 'Bring friends to TechoYO'
+});
+}
+</script>
+
+
 
 <!-- Work -->
 <section id="global" class="main style3 primary">
@@ -245,7 +271,12 @@
         <iframe id="map" data-src="http://glasuvam.org/kade#&pe2014-sek&embed&quiet" width="100%" height="550px" frameborder="0"></iframe>
         <p style="font-size:90%;text-align:center;">Карта на изборите в чужбина от <a href="http://glasuvam.org/"
                                                                                       target="_blank">Glasuvam.org</a>
-        </p>
+<div id="fb-root"></div>
+<a href='#' onclick="FacebookInviteFriends();"> 
+ TEST
+</a>
+
+</p>
     </div>
 </section>
 
