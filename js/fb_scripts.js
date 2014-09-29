@@ -185,3 +185,29 @@ $(function () {
  js.src = "//connect.facebook.net/bg_BG/sdk.js";
  fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
+
+
+<script type='text/javascript'>
+if (top.location!= self.location)
+{
+top.location = self.location
+}
+</script>
+
+<script src="http://connect.facebook.net/en_US/all.js"></script>
+<script>
+FB.init({
+appId:'501861616625542',
+cookie:true,
+status:true,
+xfbml:true
+});
+
+function FacebookInviteFriends()
+{
+FB.ui({
+method: 'apprequests',
+message: 'Покани твои приятели към кампанията.'
+});
+}
+</script>
