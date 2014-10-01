@@ -1193,41 +1193,41 @@ body.touch .poptrox-popup .closer {
     position: relative;
   }
 }
+%btn {
+  cursor:pointer;
+  text-decoration:none;
+  font-size: 1.25em;
+  background: #7bc142;
+  color: #fff;
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  top: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  background-clip: padding-box;
+  @include transition(all 100ms ease-in-out);
+  min-width:250px;
+  text-align: center;
+  //  height:1.8em;
+  padding: 0.5em 0.7em 0.5em 0.7em;
+}
+%btn-interest {
+  background: #469704;
+}
+%btn-press {
+  background: #CAE0B9;
+  color: #469704;
+}
 .intro {
   .column {
     @extend .layout;
     color: #384950;
     font-weight: 300;
-    %btn {
-      cursor:pointer;
-      text-decoration:none;
-      font-size: 1.25em;
-      background: #7bc142;
-      color: #fff;
-      display: inline-block;
-      position: relative;
-      z-index: 2;
-      top: 0;
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      -moz-border-radius: 2px;
-      -webkit-border-radius: 2px;
-      border-radius: 2px;
-      background-clip: padding-box;
-      @include transition(all 100ms ease-in-out);
-      min-width:250px;
-      text-align: center;
-      //  height:1.8em;
-      padding: 0.5em 0.7em 0.5em 0.7em;
-    }
-    %btn-interest {
-      background: #469704;
-    }
-    %btn-press {
-      background: #CAE0B9;
-      color: #469704;
-    }
     strong {
       color: #384950;
     }
@@ -1478,4 +1478,24 @@ body.touch .poptrox-popup .closer {
     left: 0;
   }
 
+}
+.invite {
+  @extend %btn;
+  min-width:0;
+  font-size: 0.7em;
+  &:hover, &:focus {
+    @extend %btn-interest;
+  }
+  &:active {
+    @extend %btn-press;
+  }
+}
+.final {
+  padding-top: 1em;
+  span, .invite {
+    vertical-align: top!important;
+  }
+  .invite {
+    margin-right: 1em;
+  }
 }

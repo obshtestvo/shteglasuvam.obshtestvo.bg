@@ -1,43 +1,3 @@
-.myButton {
-        -moz-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
-        -webkit-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
-        box-shadow:inset 0px 1px 0px 0px #7a8eb9;
-        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #637aad), color-stop(1, #5972a7));
-        background:-moz-linear-gradient(top, #637aad 5%, #5972a7 100%);
-        background:-webkit-linear-gradient(top, #637aad 5%, #5972a7 100%);
-        background:-o-linear-gradient(top, #637aad 5%, #5972a7 100%);
-        background:-ms-linear-gradient(top, #637aad 5%, #5972a7 100%);
-        background:linear-gradient(to bottom, #637aad 5%, #5972a7 100%);
-        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#637aad', endColorstr='#5972a7',GradientType=0);
-        background-color:#637aad;
-        -moz-border-radius:5px;
-        -webkit-border-radius:5px;
-        border-radius:5px;
-        border:1px solid #314179;
-        display:inline-block;
-        cursor:pointer;
-        color:#ffffff;
-        font-family:Verdana;
-        font-size:14px;
-        padding:6px 12px;
-        text-decoration:none;
-}
-.myButton:hover {
-        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5972a7), color-stop(1, #637aad));
-        background:-moz-linear-gradient(top, #5972a7 5%, #637aad 100%);
-        background:-webkit-linear-gradient(top, #5972a7 5%, #637aad 100%);
-        background:-o-linear-gradient(top, #5972a7 5%, #637aad 100%);
-        background:-ms-linear-gradient(top, #5972a7 5%, #637aad 100%);
-        background:linear-gradient(to bottom, #5972a7 5%, #637aad 100%);
-        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5972a7', endColorstr='#637aad',GradientType=0);
-        background-color:#5972a7;
-}
-.myButton:active {
-        position:relative;
-        top:1px;
-}
-
-
 .clearfix:before,
 .clearfix:after {
   content: " ";
@@ -1138,11 +1098,7 @@ header .layout, header .intro .column, .intro header .column {
   position: relative;
 }
 
-.intro .column {
-  color: #384950;
-  font-weight: 300;
-}
-.intro .column .say .btn, .intro .column .who .btn b, .intro .column .loggedNotVoted .prompt .btn, .loggedNotVoted .prompt .intro .column .btn {
+.intro .column .say .btn, .intro .column .who .btn b, .loggedNotVoted .prompt .btn, .invite {
   cursor: pointer;
   text-decoration: none;
   font-size: 1.25em;
@@ -1166,12 +1122,19 @@ header .layout, header .intro .column, .intro header .column {
   text-align: center;
   padding: 0.5em 0.7em 0.5em 0.7em;
 }
-.intro .column .say .btn:hover, .intro .column .say .btn:focus, .intro .column .who .btn:hover b, .intro .column .who .btn:focus b, .intro .column .loggedNotVoted .prompt .btn:hover, .loggedNotVoted .prompt .intro .column .btn:hover, .intro .column .loggedNotVoted .prompt .btn:focus, .loggedNotVoted .prompt .intro .column .btn:focus {
+
+.intro .column .say .btn:hover, .intro .column .say .btn:focus, .intro .column .who .btn:hover b, .intro .column .who .btn:focus b, .loggedNotVoted .prompt .btn:hover, .loggedNotVoted .prompt .btn:focus, .invite:hover, .invite:focus {
   background: #469704;
 }
-.intro .column .say .btn:active, .intro .column .who .btn:active b, .intro .column .loggedNotVoted .prompt .btn:active, .loggedNotVoted .prompt .intro .column .btn:active {
+
+.intro .column .say .btn:active, .intro .column .who .btn:active b, .loggedNotVoted .prompt .btn:active, .invite:active {
   background: #CAE0B9;
   color: #469704;
+}
+
+.intro .column {
+  color: #384950;
+  font-weight: 300;
 }
 .intro .column strong {
   color: #384950;
@@ -1394,6 +1357,20 @@ header .layout, header .intro .column, .intro header .column {
     margin: 10px auto;
     left: 0;
   }
+}
+.invite {
+  min-width: 0;
+  font-size: 0.7em;
+}
+
+.final {
+  padding-top: 1em;
+}
+.final span, .final .invite {
+  vertical-align: top !important;
+}
+.final .invite {
+  margin-right: 1em;
 }
 
 /*# sourceMappingURL=style.css.map */

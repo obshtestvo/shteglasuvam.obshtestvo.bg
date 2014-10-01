@@ -194,17 +194,11 @@ top.location = self.location
 }
 
 
-FB.init({
-appId:'501861616625542',
-cookie:true,
-status:true,
-xfbml:true
-});
 
 function FacebookInviteFriends()
 {
-FB.ui({
-method: 'apprequests',
-message: 'Покани твои приятели към кампанията.'
-});
+  FB.ui({
+    method: 'apprequests',
+    message: 'Покани твои приятели да гласуват.'
+  });
 }
